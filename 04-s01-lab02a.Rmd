@@ -1,0 +1,7 @@
+
+# Practical
+
+
+## Description of Data
+
+We will work with a local dataset gathered from high school age children.
