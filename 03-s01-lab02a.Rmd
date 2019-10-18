@@ -4,11 +4,13 @@
 
 ## Background
 
-Recent thinking conceptulises mental wellbeing as comprising of environmental, psychological and social factors. Psychologists wishing to study all of these factors together may wish to consider a complexity science perspective such as network analysis.
+Recent thinking conceptulises mental wellbeing as comprising of environmental, psychological and social factors, a challenge to static factor models. Psychologists wishing to study the dynamic interaction of many factors may wish to consider a complexity science perspective such as network analysis.
+
+
 
 ## What is a network?
 
-A network is a set of nodes connected by a set of edges.
+A network is a set of nodes connected by a set of edges. A network (as collection of various nodes and edges) can be defined as a graph
 
 Several packages are used in the network analysis, including `network`, `statnet`, `igraph` and `qgraph`.
 

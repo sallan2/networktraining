@@ -57,7 +57,7 @@ Remember we are asking R to create **random** numbers here, so do not worry if s
 
 `mean` should be changed to 3
 
-`rnorm(n, mean = 3, sd = 1)`
+`rnorm(50, mean = 3, sd = 1)`
 
 now, try running the above code and see what happens. 
 
