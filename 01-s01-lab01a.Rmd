@@ -10,8 +10,7 @@ Installing R and opening files
 
 1. What is R?
 2. How to install R
-3. How to open files.
-4. How to maniuplate data and save scripts.
+
 
 ### What is R?
 
@@ -32,7 +31,7 @@ Go to https://rstudio.com and download the RStudio Desktop (Open Source License)
 
 We have put questions throughout to help you test your knowledge. When you type in or choose the correct answer, the dashed box will change color and become solid green.
 
-- From the following options, how do you get R on your machine? `r mcq(c(answer = "Installing Base R & R Studio", "Installing R Studio", "Installing Base R"))`  
+- From the following options, how do you get R for this course? `r mcq(c(answer = "Installing Base R & R Studio", "Installing R Studio", "Installing Base R"))`  
 
 `r hide("Explain This Answer!")`
 ```{block}

@@ -23,9 +23,9 @@ knitr::write_bib(c(
 
 <img src="images/qgraph.png" style="width: 200px; float: right;">
 
-Materials for the 2.5 day Network Analysis course. 
+Materials for the 4 day Network Analysis course. 
 
-This course covers skills such as installing R, opening fies, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces network analysis as a statistical concept.
+This course covers skills such as installing R, opening fies, working with data using tidyverse, and making graphs. It also introduces network analysis as a statistical concept.
 
 
 

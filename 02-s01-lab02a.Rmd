@@ -22,3 +22,61 @@ x
 ```
 
 Notice how now the environment shows we have a Value x that is 6. We have just created a variable. In the above, we would say “the variable x is assigned to 1 + 5” or “x gets 1 + 5”
+
+### Functions & Arguments
+
+We have already created some code. But what does it all mean?
+
+Functions in R execute specific tasks and normally take a number of arguments (if you’re into linguistics you might want to think as these as verbs that require a subject and an object). You can look up all the arguments that a function takes by using the help documentation by using the format `?function`. Some arguments are required, and some are optional. Optional arguments will often use a default (normally specified in the help documentation) if you do not enter any value.
+
+As an example, let’s look at the help documentation for the function rnorm() which randomly generates a set of numbers with a normal distribution. 
+
+<img src="images/rplot.png">
+
+Open up R Studio and in the console, type the following code:
+
+```{rnorm, results="hide"}
+?rnorm
+```
+
+The help documentation for `rnorm()` should appear in the bottom right help panel. In the usage section, we see that `rnorm()` takes the following form:
+
+```{rnorm2, results="hide"}
+rnorm(n, mean = 0, sd = 1)
+```
+
+In the arguments section, there are explanations for each of the arguments. `n` is the number of observations we want to create, `mean` is the mean of the data points we will create and `sd` is the standard deviation of the set. In the details section it notes that if no values are entered for mean and sd it will use a default of 0 and 1 for these values. Because there is no default value for n it must be specified otherwise the code won’t run.
+
+Now, try running the above code for 50 participants with a mean of 3 and a standard deviation of 1.
+
+`r hide("I need a hint!")`
+```{block}
+`n` in this case would be changed to 50. 
+
+`mean` should be changed to 3
+
+`rnorm(n, mean = 3, sd = 1)`
+
+now, try running the above code and see what happens. 
+
+```
+`r unhide()`
+
+### Tidyverse
+
+
+However, we do not always want to use R to create random numbers, we want to use it to analyse our own data which commonly resides in .csv or .sav files. People have developed many different libraries to help us work with such data. One of the most popular packages is tidyverse.
+
+The Tidyverse is a collection of R packages with a common design , grammar, and data structure that makes analysis faster and easier.
+
+The first time you want to use a package, you must first install the package. `tidyverse` can be installed as follows.
+
+```{rinstall, results="hide"}
+install.packages("tidyverse")
+```
+
+Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than `tidyverse`, simply substitute the package name. 
+
+```{rinstall, results="hide"}
+library("tidyverse")
+```
