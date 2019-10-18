@@ -2,3 +2,21 @@
 
 ## Overview
 
+This is the most basic introduction to R. The material is based on the data skills course for MSc students. Find lots and lots of useful resources here: https://gupsych.github.io/data_skills/01_intro.html Please take a look at these resources in your own time.
+
+### Setting Working Directory
+
+First things first, we have to set our Working Directory to the place our file is. In RStudio we do this by hitting ‘Session > Set Working Directory > Source File Location’. This lets us interact with other files that are outside of our current script (and keeps our project nice and tidy).
+
+### Code
+
+RStudio generally has four panels: Current file, Console, Environment, and Viewer. You can think of the console as a place to try things out, and the file to write down ideas you want to stick around. Go to the console and type
+
+```{r, results="hide"}
+
+x <- 1 + 5
+x
+
+```
+
+Notice how now the environment shows we have a Value x that is 6. We have just created a variable. In the above, we would say “the variable x is assigned to 1 + 5” or “x gets 1 + 5”

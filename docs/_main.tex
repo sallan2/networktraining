@@ -29,6 +29,46 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -82,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-10-16}
+    \date{2019-10-18}
 
 \usepackage{booktabs}
 
@@ -173,6 +213,22 @@ Installing R and opening files
 
 \subsection{What is R?}\label{what-is-r}
 
+For network analysis, you need two different bits of software, R and
+RStudio. R is a programming language that you will write code in and R
+Studio is an Integrated Development Environment (IDE) which makes
+working with R easier.
+
+\subsection{Base R}\label{base-r}
+
+Install base R from \url{https://cran.rstudio.com/}. Choose the download
+link for your operating system (Linux, Mac OS X, or Windows).
+
+\subsection{R Studio}\label{r-studio}
+
+Go to \url{https://rstudio.com} and download the RStudio Desktop (Open
+Source License) version for your operating system under the list titled
+\textbf{Installers for Supported Platforms.}
+
 \subsection{Advantages of using R}\label{advantages-of-using-r}
 
 {Quickfire Questions}
@@ -184,17 +240,50 @@ color and become solid green.
 \begin{itemize}
 \tightlist
 \item
-  From the following options, what is R? Statistical Programming
-  Language Really Fun Cats
+  From the following options, how do you get R on your machine?
+  Installing Base R \& R Studio Installing R Studio Installing Base R
 \end{itemize}
 
 Explain This Answer!
 
-People can click here to get answer explained.
+R is the basic package. R Studio is an add-on that make R much easier to
+use.
 
 \chapter{Working With Data in R}\label{working-with-data-in-r}
 
 \section{Overview}\label{overview-2}
+
+This is the most basic introduction to R. The material is based on the
+data skills course for MSc students. Find lots and lots of useful
+resources here:
+\url{https://gupsych.github.io/data_skills/01_intro.html} Please take a
+look at these resources in your own time.
+
+\subsection{Setting Working Directory}\label{setting-working-directory}
+
+First things first, we have to set our Working Directory to the place
+our file is. In RStudio we do this by hitting `Session \textgreater{}
+Set Working Directory \textgreater{} Source File Location'. This lets us
+interact with other files that are outside of our current script (and
+keeps our project nice and tidy).
+
+\subsection{Code}\label{code}
+
+RStudio generally has four panels: Current file, Console, Environment,
+and Viewer. You can think of the console as a place to try things out,
+and the file to write down ideas you want to stick around. Go to the
+console and type
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{1} \OperatorTok{+}\StringTok{ }\DecValTok{5}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+Notice how now the environment shows we have a Value x that is 6. We
+have just created a variable. In the above, we would say ``the variable
+x is assigned to 1 + 5'' or ``x gets 1 + 5''
 
 \chapter{Network Analysis}\label{network-analysis}
 
@@ -234,7 +323,8 @@ children.
 Cookbook - Also covers R introduction}
 
 \href{https://psyteachr.github.io/}{We are grateful to PsyTeachR from
-the University of Glasgow}
+the University of Glasgow} for allowing us to build upon their open
+source teaching materials.
 
 \bibliography{book.bib,packages.bib}
 
