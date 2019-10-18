@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a basic introduction to R. The material is based on the data skills course for MSc students. Find lots and lots of useful resources here: https://gupsych.github.io/data_skills/01_intro.html Please take a look at these resources in your own time.
+This is a basic introduction to R. The material is based on the data skills course for MSc students at the University of Glasgow. Find lots of useful resources here: https://gupsych.github.io/data_skills/01_intro.html Please take a look at these resources in your own time.
 
 ### Setting Working Directory
 
@@ -29,7 +29,7 @@ We have already created some code. But what does it all mean?
 
 Functions in R execute specific tasks and normally take a number of arguments (if you’re into linguistics you might want to think as these as verbs that require a subject and an object). You can look up all the arguments that a function takes by using the help documentation by using the format `?function`. Some arguments are required, and some are optional. Optional arguments will often use a default (normally specified in the help documentation) if you do not enter any value.
 
-As an example, let’s look at the help documentation for the function rnorm() which randomly generates a set of numbers with a normal distribution. 
+As an example, let’s look at the help documentation for the function rnorm() which randomly generates a set of numbers with a normal distribution. Just like the numbers in the graph below.
 
 <img src="images/rplot.png">
 
@@ -47,7 +47,9 @@ rnorm(n, mean = 0, sd = 1)
 
 In the arguments section, there are explanations for each of the arguments. `n` is the number of observations we want to create, `mean` is the mean of the data points we will create and `sd` is the standard deviation of the set. In the details section it notes that if no values are entered for mean and sd it will use a default of 0 and 1 for these values. Because there is no default value for n it must be specified otherwise the code won’t run.
 
-Now, try running the above code for 50 participants with a mean of 3 and a standard deviation of 1.
+Now, try running the above code for 50 participants with a mean test score of 3 and a standard deviation of 1.
+
+Remember we are asking R to create **random** numbers here, so do not worry if someone else has slightly different values.
 
 `r hide("I need a hint!")`
 ```{block}

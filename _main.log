@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.19)  18 OCT 2019 10:23
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.19)  18 OCT 2019 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1049,18 +1049,18 @@ Chapter 1.
 [7] [8]
 Chapter 2.
 
-Package xcolor Warning: Incompatible color definition on input line 279.
+Package xcolor Warning: Incompatible color definition on input line 284.
 
 [9
 
 ]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 281.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 286.
 
-Package xcolor Warning: Incompatible color definition on input line 284.
+Package xcolor Warning: Incompatible color definition on input line 289.
 
 
-Package xcolor Warning: Incompatible color definition on input line 284.
+Package xcolor Warning: Incompatible color definition on input line 289.
 
 [10] [11] [12
 
@@ -1075,20 +1075,20 @@ Chapter 4.
 ]
 Appendix A.
 No file _main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 418.
 [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 418.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 410.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 418.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 418.
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 1D275C99A7CF4BF2ED324C5F74E9271B.
  ) 
 Here is how much of TeX's memory you used:
- 24149 strings out of 492970
- 441937 string characters out of 6133938
- 585247 words of memory out of 5000000
- 27871 multiletter control sequences out of 15000+600000
+ 24150 strings out of 492970
+ 441956 string characters out of 6133938
+ 584298 words of memory out of 5000000
+ 27872 multiletter control sequences out of 15000+600000
  543113 words of font info for 55 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  45i,6n,54p,10446b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
