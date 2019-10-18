@@ -17,16 +17,16 @@ Installing R and opening files
 
 For network analysis, you need two different bits of software, R and RStudio. R is a programming language that you will write code in and R Studio is an Integrated Development Environment (IDE) which makes working with R easier.
 
-### Base R
+### How To Install Base R
 
 Install base R from https://cran.rstudio.com/. Choose the download link for your operating system (Linux, Mac OS X, or Windows).
 
-### R Studio
+### How To Install R Studio
 
 Go to https://rstudio.com and download the RStudio Desktop (Open Source License) version for your operating system under the list titled **Installers for Supported Platforms.**
 
 
-### Advantages of using R
+### Quiz
 
 <span style="font-size: 22px; font-weight: bold; color: var(--blue);">Quickfire Questions</span>
 
