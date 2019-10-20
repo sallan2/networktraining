@@ -198,8 +198,8 @@ Figure 4.1: Participant Gender
 </div>
 <div id="working-with-data" class="section level2">
 <h2><span class="header-section-number">4.4</span> Working With Data</h2>
-<p>Participants rated themselves on 23 items of the TEQ questionnaire. We would like to create a plot to visualise the total TEQ and where participants live. However, we need to clean the data a little bit first. We will explain each line.</p>
-<p>The pipe operator %&gt;% means &quot;and then&quot;</p>
+<p>Participants rated themselves on 23 items of the TEQ questionnaire which asked about exposure to different traumatic events. We would like to create a plot to visualise the total TEQ and where participants live. However, we need to clean the data a little bit first. We will explain each line in the code below.</p>
+<p>The pipe operator %&gt;% is something you will see a lot and (in terms of code) means &quot;and then&quot;</p>
 <ol style="list-style-type: decimal">
 <li>we create a new dataframe called <code>total_TEQ</code> which we assign to our new code</li>
 <li>we then use <code>select</code>, the . lets R know we are still working with the same dataframe. We then select all TEQ variables, Pcode and Place <code>select(., TEQ1:TEQ23, Pcode, Place</code></li>
