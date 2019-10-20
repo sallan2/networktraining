@@ -4,7 +4,7 @@
 
 ## Description of Data
 
-We will work with a local dataset gathered from high school age children. Please download the .csv file [HERE](data/networkdataset.csv)
+We will work with a local dataset gathered from high school age children. Please download the .csv file [HERE](data/networkdataset.csv) (you might need to right click and choose save as)
 
 
 ```{r open_file, message = FALSE} 
@@ -69,6 +69,6 @@ geom_jitter(height = 0, width = 0.1, show.legend = FALSE) +
   scale_x_discrete(name = "Place")
 ```
 
-What location tends to have highest TEQ?
+From looking at the graph we just created, what location tends to have highest TEQ?
 
 `r mcq(c("Village", answer = "Camp", "City"))`  
