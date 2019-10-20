@@ -495,7 +495,8 @@ The pipe operator \%\textgreater{}\% is something you will see a lot and
   Place \texttt{select(.,\ TEQ1:TEQ23,\ Pcode,\ Place}
 \item
   \texttt{gather} tranforms the data from wide to long. We only want it
-  to do this to TEQ variables so we \texttt{-Pcode} and \texttt{-Place}
+  to do this to TEQ variables so we can drop \texttt{-Pcode} and
+  \texttt{-Place} using the minus sign.
 \item
   We then use \texttt{group\_by(Pcode,\ Place)} as we want to look at
   scores for each participant and where they live

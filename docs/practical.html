@@ -203,7 +203,7 @@ Figure 4.1: Participant Gender
 <ol style="list-style-type: decimal">
 <li>we create a new dataframe called <code>total_TEQ</code> which we assign to our new code</li>
 <li>we then use <code>select</code>, the . lets R know we are still working with the same dataframe. We then select all TEQ variables, Pcode and Place <code>select(., TEQ1:TEQ23, Pcode, Place</code></li>
-<li><code>gather</code> tranforms the data from wide to long. We only want it to do this to TEQ variables so we <code>-Pcode</code> and <code>-Place</code></li>
+<li><code>gather</code> tranforms the data from wide to long. We only want it to do this to TEQ variables so we can drop <code>-Pcode</code> and <code>-Place</code> using the minus sign.</li>
 <li>We then use <code>group_by(Pcode, Place)</code> as we want to look at scores for each participant and where they live</li>
 <li>Finally <code>summarise(tot_TEQ = sum(score))</code> creates a column named tot_TEQ which has the total TEQ score for each participant.</li>
 </ol>
