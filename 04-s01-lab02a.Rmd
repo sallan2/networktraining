@@ -4,7 +4,7 @@
 
 ## Description of Data
 
-We will work with a local dataset gathered from high school age children. Please download the .csv file [HERE](https://raw.githubusercontent.com/sallan2/networktraining/master/networkdataset.csv)
+We will work with a local dataset gathered from high school age children. Please download the .csv file [HERE](data/networkdataset.csv)
 
 
 ```{r open_file, message = FALSE} 
