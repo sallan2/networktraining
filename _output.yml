@@ -18,7 +18,7 @@ bookdown::gitbook:
         <li><a href="https://psyteachr.github.io/" target="blank">Based on PsyTeachR</a></li>
     download: []
     fontsettings:
-      theme: white
+      theme: lumen
       family: sans
       size: 2
     sharing:

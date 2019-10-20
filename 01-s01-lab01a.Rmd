@@ -19,11 +19,11 @@ For network analysis, you need two different bits of software, R and RStudio. R 
 
 ### How To Install Base R
 
-Install base R from https://cran.rstudio.com/. Choose the download link for your operating system (Linux, Mac OS X, or Windows).
+Install base R from [https://cran.rstudio.com/](https://cran.rstudio.com/){target="_blank"}. Choose the download link for your operating system (Linux, Mac OS X, or Windows).
 
 ### How To Install R Studio
 
-Go to https://rstudio.com and download the RStudio Desktop (Open Source License) version for your operating system under the list titled **Installers for Supported Platforms.**
+Go to [https://rstudio.com](https://rstudio.com){target="_blank"} and download the RStudio Desktop (Open Source License) version for your operating system under the list titled **Installers for Supported Platforms.**
 
 
 ### Quiz
@@ -41,4 +41,3 @@ R is the basic package. R Studio is an add-on that make R much easier to use.
 `r unhide()`  
 
 ### Where to Get Help
-

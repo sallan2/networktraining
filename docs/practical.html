@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-10-18" />
+<meta name="date" content="2019-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,6 +119,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#code"><i class="fa fa-check"></i><b>2.1.2</b> Code</a></li>
 <li class="chapter" data-level="2.1.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#functions-arguments"><i class="fa fa-check"></i><b>2.1.3</b> Functions &amp; Arguments</a></li>
 <li class="chapter" data-level="2.1.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.1.4</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.1.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.1.5</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -128,6 +129,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4" data-path="practical.html"><a href="practical.html"><i class="fa fa-check"></i><b>4</b> Practical</a><ul>
 <li class="chapter" data-level="4.1" data-path="practical.html"><a href="practical.html#description-of-data"><i class="fa fa-check"></i><b>4.1</b> Description of Data</a></li>
+<li class="chapter" data-level="4.2" data-path="practical.html"><a href="practical.html#visualising-data"><i class="fa fa-check"></i><b>4.2</b> Visualising Data</a></li>
+<li class="chapter" data-level="4.3" data-path="practical.html"><a href="practical.html#working-with-data"><i class="fa fa-check"></i><b>4.3</b> Working With Data</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>A</b> References</a></li>
@@ -159,7 +162,66 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Session 4</span> Practical</h1>
 <div id="description-of-data" class="section level2">
 <h2><span class="header-section-number">4.1</span> Description of Data</h2>
-<p>We will work with a local dataset gathered from high school age children.</p>
+<p>We will work with a local dataset gathered from high school age children. Please download the .csv file <a href="https://sallan2.github.io/networktraining/networkdataset.csv">HERE</a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;networkdataset.csv&quot;</span>)</code></pre></div>
+</div>
+<div id="visualising-data" class="section level2">
+<h2><span class="header-section-number">4.2</span> Visualising Data</h2>
+<p>How many females and males?</p>
+<p>The # symbol in the code is a comment. Comments do not add anything to the code but are there for human understanding to explain what is happening in the code. Look at the comments in the code below to understand what is going on.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span>
+<span class="co"># is a factor on our x axis and we want to fill with colour</span>
+<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Gender), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Gender))) <span class="op">+</span>
+<span class="st">  </span><span class="co"># we are choosing a bar plot</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> .<span class="dv">8</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># we are naming the x scale</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># we are naming the y scale</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="co"># we are chosing a theme from pre-existing options</span>
+<span class="st">  </span><span class="kw">theme_minimal</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:graph"></span>
+<img src="04-s01-lab02a_files/figure-html/graph-1.png" alt="Participant Gender" width="100%" />
+<p class="caption">
+Figure 4.1: Participant Gender
+</p>
+</div>
+<ul>
+<li>Are there more males or females?</li>
+</ul>
+<p><input class='solveme nospaces' size='5' data-answer='["Males","males","TRUE"]'/></p>
+</div>
+<div id="working-with-data" class="section level2">
+<h2><span class="header-section-number">4.3</span> Working With Data</h2>
+<p>Participants rated themselves on 23 items of the TEQ questionnaire. We would like to create a plot to visualise the total TEQ and where participants live. However, we need to clean the data a little bit first. We will explain each line.</p>
+<p>The pipe operator %&gt;% means &quot;and then&quot;</p>
+<ol style="list-style-type: decimal">
+<li>we create a new dataframe called <code>total_TEQ</code> which we assign to our new code</li>
+<li>we then use <code>select</code>, the . lets R know we are still working with the same dataframe. We then select all TEQ variables, Pcode and Place <code>select(., TEQ1:TEQ23, Pcode, Place</code></li>
+<li><code>gather</code> tranforms the data from wide to long. We only want it to do this to TEQ variables so we <code>-Pcode</code> and <code>-Place</code></li>
+<li>We then use <code>group_by(Pcode, Place)</code> as we want to look at scores for each participant and where they live</li>
+<li>Finally <code>summarise(tot_TEQ = sum(score))</code> creates a column named tot_TEQ which has the total TEQ score for each participant.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">total_TEQ &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
+<span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span>
+<span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span>
+<span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span>
+<span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_jitter</span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:graph2"></span>
+<img src="04-s01-lab02a_files/figure-html/graph2-1.png" alt="TEQ Scores" width="100%" />
+<p class="caption">
+Figure 4.2: TEQ Scores
+</p>
+</div>
+<p>What location tends to have highest TEQ?</p>
+<p><select class='solveme' data-answer='["Camp"]'> <option></option> <option>Village</option> <option>Camp</option> <option>City</option></select></p>
 
 </div>
 </div>
@@ -283,7 +345,7 @@ gitbook.start({
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "lumen",
 "family": "sans",
 "size": 2
 },

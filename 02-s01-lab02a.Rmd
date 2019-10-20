@@ -37,7 +37,7 @@ As an example, let’s look at the help documentation for the function rnorm() w
 
 Open up R Studio and in the console, type the following code:
 
-```{rnorm, results="hide"}
+```{r norm, results="hide"}
 ?rnorm
 ```
 
@@ -81,7 +81,17 @@ install.packages("tidyverse")
 
 Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than `tidyverse`, simply substitute the package name. 
 
-```{rinstall, results="hide"}
-library("tidyverse")
+
+
+### Keeping Environment Clean
+
+As you work, you will notice your environment will fill up with lots of variables that you have assigned. 
+<img src="images/messy.png">
+
+Before beginning any new analyses it is important to clear the environment which can be done with the following code. 
+
+
+```{r clean, results="hide"}
+rm(list = ls())
 ```
 

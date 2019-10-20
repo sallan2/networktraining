@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-10-18}
+    \date{2019-10-20}
 
 \usepackage{booktabs}
 
@@ -311,9 +311,11 @@ distribution. Just like the numbers in the graph below.
 
 Open up R Studio and in the console, type the following code:
 
-\begin{verbatim}
-?rnorm
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?rnorm}
+\end{Highlighting}
+\end{Shaded}
 
 The help documentation for \texttt{rnorm()} should appear in the bottom
 right help panel. In the usage section, we see that \texttt{rnorm()}
@@ -368,9 +370,19 @@ Once the package has been installed, any time you want to use the
 package you use the following code. If you want to open a package other
 than \texttt{tidyverse}, simply substitute the package name.
 
-\begin{verbatim}
-library("tidyverse")
-\end{verbatim}
+\subsection{Keeping Environment Clean}\label{keeping-environment-clean}
+
+As you work, you will notice your environment will fill up with lots of
+variables that you have assigned.
+
+Before beginning any new analyses it is important to clear the
+environment which can be done with the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rm}\NormalTok{(}\DataTypeTok{list =} \KeywordTok{ls}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
 
 \chapter{Network Analysis}\label{network-analysis}
 
@@ -401,7 +413,119 @@ Dr.~Sacha Epskamp and colleagues in 2012. We will be be working with
 \section{Description of Data}\label{description-of-data}
 
 We will work with a local dataset gathered from high school age
-children.
+children. Please download the .csv file
+\href{https://sallan2.github.io/networktraining/networkdataset.csv}{HERE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"networkdataset.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Visualising Data}\label{visualising-data}
+
+How many females and males?
+
+The \# symbol in the code is a comment. Comments do not add anything to
+the code but are there for human understanding to explain what is
+happening in the code. Look at the comments in the code below to
+understand what is going on.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# we are telling R we want to plot dat, we are letting R know Gender }
+\CommentTok{# is a factor on our x axis and we want to fill with colour}
+\KeywordTok{ggplot}\NormalTok{(data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.factor}\NormalTok{(Gender), }\DataTypeTok{fill =} \KeywordTok{as.factor}\NormalTok{(Gender))) }\OperatorTok{+}
+\StringTok{  }\CommentTok{# we are choosing a bar plot}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alpha =}\NormalTok{ .}\DecValTok{8}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\CommentTok{# we are naming the x scale}
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Gender"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\CommentTok{# we are chosing a colour scheme from pre-exising options}
+\StringTok{  }\KeywordTok{scale_fill_viridis_d}\NormalTok{(}\DataTypeTok{option =} \StringTok{"D"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\CommentTok{# we are naming the y scale}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Number of participants"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\CommentTok{# we are chosing a theme from pre-existing options}
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{04-s01-lab02a_files/figure-latex/graph-1} 
+
+}
+
+\caption{Participant Gender}\label{fig:graph}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Are there more males or females?
+\end{itemize}
+
+\section{Working With Data}\label{working-with-data}
+
+Participants rated themselves on 23 items of the TEQ questionnaire. We
+would like to create a plot to visualise the total TEQ and where
+participants live. However, we need to clean the data a little bit
+first. We will explain each line.
+
+The pipe operator \%\textgreater{}\% means ``and then''
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  we create a new dataframe called \texttt{total\_TEQ} which we assign
+  to our new code
+\item
+  we then use \texttt{select}, the . lets R know we are still working
+  with the same dataframe. We then select all TEQ variables, Pcode and
+  Place \texttt{select(.,\ TEQ1:TEQ23,\ Pcode,\ Place}
+\item
+  \texttt{gather} tranforms the data from wide to long. We only want it
+  to do this to TEQ variables so we \texttt{-Pcode} and \texttt{-Place}
+\item
+  We then use \texttt{group\_by(Pcode,\ Place)} as we want to look at
+  scores for each participant and where they live
+\item
+  Finally \texttt{summarise(tot\_TEQ\ =\ sum(score))} creates a column
+  named tot\_TEQ which has the total TEQ score for each participant.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{total_TEQ <-}\StringTok{ }\NormalTok{data }\OperatorTok{%>%}
+\KeywordTok{select}\NormalTok{(., TEQ1}\OperatorTok{:}\NormalTok{TEQ23, Pcode, Place) }\OperatorTok{%>%}
+\KeywordTok{gather}\NormalTok{(}\StringTok{"var"}\NormalTok{, }\StringTok{"score"}\NormalTok{, }\OperatorTok{-}\NormalTok{Pcode, }\OperatorTok{-}\NormalTok{Place) }\OperatorTok{%>%}
+\KeywordTok{group_by}\NormalTok{(Pcode, Place) }\OperatorTok{%>%}
+\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{tot_TEQ =} \KeywordTok{sum}\NormalTok{(score))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(total_TEQ, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.factor}\NormalTok{(Place), }\DataTypeTok{fill =} \KeywordTok{as.factor}\NormalTok{(Place), }\DataTypeTok{y =}\NormalTok{ tot_TEQ)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_violin}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{trim =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{draw_quantiles =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.75}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{width =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Total TEQ"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Place"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{04-s01-lab02a_files/figure-latex/graph2-1} 
+
+}
+
+\caption{TEQ Scores}\label{fig:graph2}
+\end{figure}
+
+What location tends to have highest TEQ?
+
+ Village Camp City
 
 \appendix
 

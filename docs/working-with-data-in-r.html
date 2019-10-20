@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-10-18" />
+<meta name="date" content="2019-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,6 +119,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#code"><i class="fa fa-check"></i><b>2.1.2</b> Code</a></li>
 <li class="chapter" data-level="2.1.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#functions-arguments"><i class="fa fa-check"></i><b>2.1.3</b> Functions &amp; Arguments</a></li>
 <li class="chapter" data-level="2.1.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.1.4</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.1.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.1.5</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -128,6 +129,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4" data-path="practical.html"><a href="practical.html"><i class="fa fa-check"></i><b>4</b> Practical</a><ul>
 <li class="chapter" data-level="4.1" data-path="practical.html"><a href="practical.html#description-of-data"><i class="fa fa-check"></i><b>4.1</b> Description of Data</a></li>
+<li class="chapter" data-level="4.2" data-path="practical.html"><a href="practical.html#visualising-data"><i class="fa fa-check"></i><b>4.2</b> Visualising Data</a></li>
+<li class="chapter" data-level="4.3" data-path="practical.html"><a href="practical.html#working-with-data"><i class="fa fa-check"></i><b>4.3</b> Working With Data</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>A</b> References</a></li>
@@ -181,7 +184,7 @@ x</code></pre></div>
 <p>As an example, let’s look at the help documentation for the function rnorm() which randomly generates a set of numbers with a normal distribution. Just like the numbers in the graph below.</p>
 <p><img src="images/Rplot.png"></p>
 <p>Open up R Studio and in the console, type the following code:</p>
-<pre class="rnorm"><code>?rnorm</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?rnorm</code></pre></div>
 <p>The help documentation for <code>rnorm()</code> should appear in the bottom right help panel. In the usage section, we see that <code>rnorm()</code> takes the following form:</p>
 <pre class="rnorm2"><code>rnorm(n, mean = 0, sd = 1)</code></pre>
 <p>In the arguments section, there are explanations for each of the arguments. <code>n</code> is the number of observations we want to create, <code>mean</code> is the mean of the data points we will create and <code>sd</code> is the standard deviation of the set. In the details section it notes that if no values are entered for mean and sd it will use a default of 0 and 1 for these values. Because there is no default value for n it must be specified otherwise the code won’t run.</p>
@@ -204,7 +207,12 @@ I need a hint!
 <p>The first time you want to use a package, you must first install the package. <code>tidyverse</code> can be installed as follows.</p>
 <pre class="rinstall"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 <p>Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than <code>tidyverse</code>, simply substitute the package name.</p>
-<pre class="rinstall"><code>library(&quot;tidyverse&quot;)</code></pre>
+</div>
+<div id="keeping-environment-clean" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Keeping Environment Clean</h3>
+<p>As you work, you will notice your environment will fill up with lots of variables that you have assigned. <img src="images/messy.png"></p>
+<p>Before beginning any new analyses it is important to clear the environment which can be done with the following code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre></div>
 
 </div>
 </div>
@@ -325,7 +333,7 @@ gitbook.start({
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "lumen",
 "family": "sans",
 "size": 2
 },
