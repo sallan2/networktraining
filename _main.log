@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.19)  20 OCT 2019 16:21
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.19)  20 OCT 2019 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1073,13 +1073,13 @@ Package xcolor Warning: Incompatible color definition on input line 318.
 
 [10]
 
-Package xcolor Warning: Incompatible color definition on input line 381.
+Package xcolor Warning: Incompatible color definition on input line 383.
 
 
-Package xcolor Warning: Incompatible color definition on input line 385.
+Package xcolor Warning: Incompatible color definition on input line 387.
 
 
-Package xcolor Warning: Incompatible color definition on input line 385.
+Package xcolor Warning: Incompatible color definition on input line 387.
 
 [11] [12
 
@@ -1090,77 +1090,77 @@ Chapter 3.
 ]
 Chapter 4.
 
-Package xcolor Warning: Incompatible color definition on input line 420.
+Package xcolor Warning: Incompatible color definition on input line 426.
 
 
-Package xcolor Warning: Incompatible color definition on input line 425.
+Package xcolor Warning: Incompatible color definition on input line 431.
 
 
-Package xcolor Warning: Incompatible color definition on input line 425.
+Package xcolor Warning: Incompatible color definition on input line 431.
 
 
-Package xcolor Warning: Incompatible color definition on input line 436.
+Package xcolor Warning: Incompatible color definition on input line 447.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 461.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 461.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 461.
 
 [15]
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 461.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 461.
 
 File: 04-s01-lab02a_files/figure-latex/graph-1.pdf Graphic file (type pdf)
 <use 04-s01-lab02a_files/figure-latex/graph-1.pdf>
-
-Package xcolor Warning: Incompatible color definition on input line 499.
-
 [16]
 
-Package xcolor Warning: Incompatible color definition on input line 507.
+Package xcolor Warning: Incompatible color definition on input line 502.
 
 
-Package xcolor Warning: Incompatible color definition on input line 507.
+Package xcolor Warning: Incompatible color definition on input line 510.
 
 
-Package xcolor Warning: Incompatible color definition on input line 509.
+Package xcolor Warning: Incompatible color definition on input line 510.
 
 
-Package xcolor Warning: Incompatible color definition on input line 516.
+Package xcolor Warning: Incompatible color definition on input line 527.
 
 
-Package xcolor Warning: Incompatible color definition on input line 516.
+Package xcolor Warning: Incompatible color definition on input line 534.
+
+
+Package xcolor Warning: Incompatible color definition on input line 534.
 
 File: 04-s01-lab02a_files/figure-latex/graph2-1.pdf Graphic file (type pdf)
 <use 04-s01-lab02a_files/figure-latex/graph2-1.pdf>
-[17] [18
-
-]
+[17] [18]
 Appendix A.
 No file _main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 547.
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 547.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 565.
+[19
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 565.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 547.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 547.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 565.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 565.
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 79F94ED5F72B41E16DEAB0C709DE51B2.
+(rerunfilecheck)             Checksum: DE2E5349934253D371A4AA42FB729512.
  ) 
 Here is how much of TeX's memory you used:
- 24171 strings out of 492970
- 442528 string characters out of 6133938
- 584529 words of memory out of 5000000
- 27887 multiletter control sequences out of 15000+600000
+ 24173 strings out of 492970
+ 442573 string characters out of 6133938
+ 584626 words of memory out of 5000000
+ 27889 multiletter control sequences out of 15000+600000
  543121 words of font info for 56 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 45i,6n,54p,10446b,373s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,6n,54p,10446b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on _main.pdf (19 pages).

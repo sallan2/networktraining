@@ -4,7 +4,9 @@
 
 ## Description of Data
 
-We will work with a local dataset gathered from high school age children. Please download the .csv file [HERE](data/networkdataset.csv) (you might need to right click and choose save as)
+We will work with a local dataset gathered from high school age children. Please download the .csv file [HERE](data/networkdataset.csv) (you might need to right click and choose save as).
+
+First, we need to make sure we have `tidyverse` loaded and then open the file. We are creating a data frame called which we will assign to our .csv file.
 
 
 ```{r open_file, message = FALSE} 
@@ -13,6 +15,10 @@ data <- read_csv("networkdataset.csv")
 ```
 
 ## Visualising Data
+
+To do - write a bit about plotting options in R.
+
+## Visualising Data - Practical
 
 How many females and males?
 
@@ -30,14 +36,8 @@ ggplot(data, aes(x = as.factor(Gender), fill = as.factor(Gender))) +
   # we are chosing a colour scheme from pre-exising options
   scale_fill_viridis_d(option = "D") +
   # we are naming the y scale
-  scale_y_continuous(name = "Number of participants")+
-  # we are chosing a theme from pre-existing options
-  theme_minimal()
+  scale_y_continuous(name = "Number of participants")
 ```
-
-* Are there more males or females?
-
-`r fitb(c("Males", "males", ignore_case = TRUE))`
 
 ## Working With Data
 
@@ -62,9 +62,18 @@ summarise(tot_TEQ = sum(score))
 
 ```
 
+## Plotting Data
+
+Now we can visualise `total_TEQ`. 
+
+When visualising differences between groups in numerical values, people have historically used bar graphs. There is currently a shift taking place, with people moving away from bar graphs, and towards more informative visualisations.
+
+Before we used `geom_bar()` to create a barplot and this time we will use `geom_violin()` to create a violin plot. In the violin plot, the width of the area indicates the density of the data at that point on the y axis. We have also included a box plot using `geom_boxplot` within this graph to show another option.
+
+
 ```{r graph2, fig.cap="TEQ Scores"}
-ggplot(total_TEQ, aes(x = as.factor(Place), fill = as.factor(Place), y = tot_TEQ)) + geom_violin(show.legend = FALSE, trim = TRUE, draw_quantiles = c(0.25, 0.5, 0.75)) + 
-geom_jitter(height = 0, width = 0.1, show.legend = FALSE) +
+ggplot(total_TEQ, aes(x = as.factor(Place), fill = as.factor(Place), y = tot_TEQ)) + geom_violin(show.legend = FALSE, trim = TRUE) +
+  geom_boxplot(width = 0.2, show.legend = FALSE) +
   scale_y_continuous(name = "Total TEQ") +
   scale_x_discrete(name = "Place")
 ```

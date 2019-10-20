@@ -376,7 +376,9 @@ As you work, you will notice your environment will fill up with lots of
 variables that you have assigned.
 
 Before beginning any new analyses it is important to clear the
-environment which can be done with the following code.
+environment which can be done with the following code. If you run this
+code R will forget any libraries that you have loaded, such as
+\texttt{tidyverse}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -415,7 +417,11 @@ Dr.~Sacha Epskamp and colleagues in 2012. We will be be working with
 We will work with a local dataset gathered from high school age
 children. Please download the .csv file
 \href{data/networkdataset.csv}{HERE} (you might need to right click and
-choose save as)
+choose save as).
+
+First, we need to make sure we have \texttt{tidyverse} loaded and then
+open the file. We are creating a data frame called which we will assign
+to our .csv file.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -425,6 +431,11 @@ choose save as)
 \end{Shaded}
 
 \section{Visualising Data}\label{visualising-data}
+
+To do - write a bit about plotting options in R.
+
+\section{Visualising Data -
+Practical}\label{visualising-data---practical}
 
 How many females and males?
 
@@ -445,9 +456,7 @@ understand what is going on.
 \StringTok{  }\CommentTok{# we are chosing a colour scheme from pre-exising options}
 \StringTok{  }\KeywordTok{scale_fill_viridis_d}\NormalTok{(}\DataTypeTok{option =} \StringTok{"D"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\CommentTok{# we are naming the y scale}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Number of participants"}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\CommentTok{# we are chosing a theme from pre-existing options}
-\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{()}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Number of participants"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -459,12 +468,6 @@ understand what is going on.
 
 \caption{Participant Gender}\label{fig:graph}
 \end{figure}
-
-\begin{itemize}
-\tightlist
-\item
-  Are there more males or females?
-\end{itemize}
 
 \section{Working With Data}\label{working-with-data}
 
@@ -506,10 +509,25 @@ The pipe operator \%\textgreater{}\% means ``and then''
 \end{Highlighting}
 \end{Shaded}
 
+\section{Plotting Data}\label{plotting-data}
+
+Now we can visualise \texttt{total\_TEQ}.
+
+When visualising differences between groups in numerical values, people
+have historically used bar graphs. There is currently a shift taking
+place, with people moving away from bar graphs, and towards more
+informative visualisations.
+
+Before we used \texttt{geom\_bar()} to create a barplot and this time we
+will use \texttt{geom\_violin()} to create a violin plot. In the violin
+plot, the width of the area indicates the density of the data at that
+point on the y axis. We have also included a box plot using
+\texttt{geom\_boxplot} within this graph to show another option.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(total_TEQ, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.factor}\NormalTok{(Place), }\DataTypeTok{fill =} \KeywordTok{as.factor}\NormalTok{(Place), }\DataTypeTok{y =}\NormalTok{ tot_TEQ)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_violin}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{trim =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{draw_quantiles =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.75}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
-\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{width =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
+\KeywordTok{ggplot}\NormalTok{(total_TEQ, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.factor}\NormalTok{(Place), }\DataTypeTok{fill =} \KeywordTok{as.factor}\NormalTok{(Place), }\DataTypeTok{y =}\NormalTok{ tot_TEQ)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_violin}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{trim =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Total TEQ"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{name =} \StringTok{"Place"}\NormalTok{)}
 \end{Highlighting}
