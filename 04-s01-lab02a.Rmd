@@ -8,6 +8,7 @@ We will work with a local dataset gathered from high school age children. Please
 
 First, we need to make sure we have `tidyverse` loaded and then open the file. We are creating a data frame called which we will assign to our .csv file.
 
+Remember, this needs to be saved within the working directory that you set so that R knows where to find it.
 
 ```{r open_file, message = FALSE} 
 library(tidyverse)
