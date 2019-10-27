@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Session 4 Practical | Network Analysis in R</title>
   <meta name="description" content="network-course" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Session 4 Practical | Network Analysis in R" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="network-analysis.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="rstudio-cloud.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -49,41 +52,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
@@ -135,7 +163,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="practical.html"><a href="practical.html#plotting-data"><i class="fa fa-check"></i><b>4.5</b> Plotting Data</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>A</b> References</a></li>
+<li class="chapter" data-level="A" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>A</b> RStudio Cloud</a><ul>
+<li class="chapter" data-level="A.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#creating-an-account"><i class="fa fa-check"></i><b>A.1</b> Creating an Account</a></li>
+<li class="chapter" data-level="A.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#accessing-rstudio-cloud"><i class="fa fa-check"></i><b>A.2</b> Accessing RStudio Cloud</a></li>
+<li class="chapter" data-level="A.3" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#getting-started-with-rstudio-cloud"><i class="fa fa-check"></i><b>A.3</b> Getting Started with RStudio Cloud</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#naming-the-workspace"><i class="fa fa-check"></i><b>A.3.1</b> Naming the Workspace</a></li>
+<li class="chapter" data-level="A.3.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#uploading-files"><i class="fa fa-check"></i><b>A.3.2</b> Uploading Files</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
     target="blank"><img alt="Creative Commons License" 
@@ -167,8 +203,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>We will work with a local dataset gathered from high school age children. Please download the .csv file <a href="data/networkdataset.csv">HERE</a> (you might need to right click and choose save as).</p>
 <p>First, we need to make sure we have <code>tidyverse</code> loaded and then open the file. We are creating a data frame called which we will assign to our .csv file.</p>
 <p>Remember, this needs to be saved within the working directory that you set so that R knows where to find it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;networkdataset.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;networkdataset.csv&quot;</span>)</a></code></pre></div>
 </div>
 <div id="visualising-data" class="section level2">
 <h2><span class="header-section-number">4.2</span> Visualising Data</h2>
@@ -178,17 +214,17 @@ data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class=
 <h2><span class="header-section-number">4.3</span> Visualising Data - Practical</h2>
 <p>How many females and males?</p>
 <p>The # symbol in the code is a comment. Comments do not add anything to the code but are there for human understanding to explain what is happening in the code. Look at the comments in the code below to understand what is going on.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span>
-<span class="co"># is a factor on our x axis and we want to fill with colour</span>
-<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Gender), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Gender))) <span class="op">+</span>
-<span class="st">  </span><span class="co"># we are choosing a bar plot</span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> .<span class="dv">8</span>) <span class="op">+</span>
-<span class="st">  </span><span class="co"># we are naming the x scale</span>
-<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="co"># we are naming the y scale</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># is a factor on our x axis and we want to fill with colour</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Gender), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Gender))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="co"># we are choosing a bar plot</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="co"># we are naming the x scale</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="st">  </span><span class="co"># we are naming the y scale</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:graph"></span>
 <img src="04-s01-lab02a_files/figure-html/graph-1.png" alt="Participant Gender" width="100%" />
 <p class="caption">
@@ -199,7 +235,7 @@ Figure 4.1: Participant Gender
 <div id="working-with-data" class="section level2">
 <h2><span class="header-section-number">4.4</span> Working With Data</h2>
 <p>Participants rated themselves on 23 items of the TEQ questionnaire which asked about exposure to different traumatic events. We would like to create a plot to visualise the total TEQ and where participants live. However, we need to clean the data a little bit first. We will explain each line in the code below.</p>
-<p>The pipe operator %&gt;% is something you will see a lot and (in terms of code) means &quot;and then&quot;</p>
+<p>The pipe operator %&gt;% is something you will see a lot and (in terms of code) means “and then”</p>
 <ol style="list-style-type: decimal">
 <li>we create a new dataframe called <code>total_TEQ</code> which we assign to our new code</li>
 <li>we then use <code>select</code>, the . lets R know we are still working with the same dataframe. We then select all TEQ variables, Pcode and Place <code>select(., TEQ1:TEQ23, Pcode, Place</code></li>
@@ -207,21 +243,21 @@ Figure 4.1: Participant Gender
 <li>We then use <code>group_by(Pcode, Place)</code> as we want to look at scores for each participant and where they live</li>
 <li>Finally <code>summarise(tot_TEQ = sum(score))</code> creates a column named tot_TEQ which has the total TEQ score for each participant.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">total_TEQ &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
-<span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span>
-<span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span>
-<span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span>
-<span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</a></code></pre></div>
 </div>
 <div id="plotting-data" class="section level2">
 <h2><span class="header-section-number">4.5</span> Plotting Data</h2>
 <p>Now we can visualise <code>total_TEQ</code>.</p>
 <p>When visualising differences between groups in numerical values, people have historically used bar graphs. There is currently a shift taking place, with people moving away from bar graphs, and towards more informative visualisations.</p>
 <p>Before we used <code>geom_bar()</code> to create a barplot and this time we will use <code>geom_violin()</code> to create a violin plot. In the violin plot, the width of the area indicates the density of the data at that point on the y axis. We have also included a box plot using <code>geom_boxplot</code> within this graph to show another option.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:graph2"></span>
 <img src="04-s01-lab02a_files/figure-html/graph2-1.png" alt="TEQ Scores" width="100%" />
 <p class="caption">
@@ -236,7 +272,6 @@ Figure 4.2: TEQ Scores
 
 
 
-</div>
 <div class="psyteachr_footer">
   
 </div>
@@ -328,16 +363,18 @@ window.onload = function() {
         </div>
       </div>
 <a href="network-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rstudio-cloud.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

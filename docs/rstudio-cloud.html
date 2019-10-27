@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 2 Working With Data in R | Network Analysis in R</title>
+  <title>A RStudio Cloud | Network Analysis in R</title>
   <meta name="description" content="network-course" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 2 Working With Data in R | Network Analysis in R" />
+  <meta property="og:title" content="A RStudio Cloud | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 2 Working With Data in R | Network Analysis in R" />
+  <meta name="twitter:title" content="A RStudio Cloud | Network Analysis in R" />
   
   <meta name="twitter:description" content="network-course" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="starting-with-r.html"/>
-<link rel="next" href="network-analysis.html"/>
+<link rel="prev" href="practical.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -196,62 +196,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-data-in-r" class="section level1">
-<h1><span class="header-section-number">Session 2</span> Working With Data in R</h1>
-<div id="overview-2" class="section level2">
-<h2><span class="header-section-number">2.1</span> Overview</h2>
-<p>This is a basic introduction to R. The material is based on the data skills course for MSc students at the University of Glasgow. Find lots of useful resources here: <a href="https://gupsych.github.io/data_skills/01_intro.html" class="uri">https://gupsych.github.io/data_skills/01_intro.html</a></p>
-<p>Please take a look at these free open resources in your own time.</p>
-<div id="setting-working-directory" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Setting Working Directory</h3>
-<p>First things first, we will set the working directory. What this means is that we need to tell R where the files we need are located. Think of it just like when you have different projects, and you have seperate folders for each project e.g. research conducted in schools, research conducted in the community and so on. When working on R, it’s useful to have all the data sets and files you need in one folder.</p>
-<p>To set the working directory press session -&gt; set working directory -&gt; choose directory and then select the folder where the data sets we are working on are saved, and save this file in the same folder as well. In other words- make sure your data sets and scripts are all in the same folder.</p>
-<p><img src="images/setwd.gif"></p>
+<div id="rstudio-cloud" class="section level1">
+<h1><span class="header-section-number">A</span> RStudio Cloud</h1>
+<div id="creating-an-account" class="section level2">
+<h2><span class="header-section-number">A.1</span> Creating an Account</h2>
+<p>Head to <a href="https://rstudio.cloud/">RStudio Cloud</a> and click “Sign Up” at the top of the page</p>
+<p><img src="images/appendix/online/1.gif" alt="sign up for rstudio online"></p>
+<p>Enter details you wish to sign in with and select “Sign up”</p>
+<p><img src="images/appendix/online/2.gif" alt="enter details to create an account"></p>
+<p>You’ll receive an e-mail at the address you sign up with, make sure to click the link to activate your account fully!</p>
 </div>
-<div id="code" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Code</h3>
-<p>RStudio generally has four panels: Current file, Console, Environment, and Viewer. You can think of the console as a place to try things out, and the file to write down ideas you want to stick around. Go to the console and type</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">x</a></code></pre></div>
-<p>Notice how now the environment shows we have a Value x that is 6. We have just created a variable. In the above, we would say “the variable x is assigned to 1 + 5” or “x gets 1 + 5”</p>
+<div id="accessing-rstudio-cloud" class="section level2">
+<h2><span class="header-section-number">A.2</span> Accessing RStudio Cloud</h2>
+<p>Head back to <a href="https://rstudio.cloud/">RStudio Cloud</a> and select “log In”, where we previously chose “Sign Up”</p>
+<p><img src="images/appendix/online/3.gif" alt="log into rstudio"></p>
+<p>Once logged in, you’ll be taken to the “Your Workspace” page, this is where all of your RStudio Cloud projects will be accessible from</p>
+<p>Select “New Project” and then “New Project” again</p>
+<p><img src="images/appendix/online/4.gif" alt="create a new project"></p>
+<p>You will see the message “Deploying Project” for a couple of minutes while it creates your Workspace</p>
+<p><img src="images/appendix/online/deploying.gif" alt="deploying animation"></p>
 </div>
-<div id="functions-arguments" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Functions &amp; Arguments</h3>
-<p>We have already created some code. But what does it all mean?</p>
-<p>Functions in R execute specific tasks and normally take a number of arguments (if you’re into linguistics you might want to think as these as verbs that require a subject and an object). You can look up all the arguments that a function takes by using the help documentation by using the format <code>?function</code>. Some arguments are required, and some are optional. Optional arguments will often use a default (normally specified in the help documentation) if you do not enter any value.</p>
-<p>As an example, let’s look at the help documentation for the function rnorm() which randomly generates a set of numbers with a normal distribution. Just like the numbers in the graph below.</p>
-<p><img src="images/rplot.png"></p>
-<p>Open up R Studio and in the console, type the following code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">?rnorm</a></code></pre></div>
-<p>The help documentation for <code>rnorm()</code> should appear in the bottom right help panel. In the usage section, we see that <code>rnorm()</code> takes the following form:</p>
-<pre class="rnorm2"><code>rnorm(n, mean = 0, sd = 1)</code></pre>
-<p>In the arguments section, there are explanations for each of the arguments. <code>n</code> is the number of observations we want to create, <code>mean</code> is the mean of the data points we will create and <code>sd</code> is the standard deviation of the set. In the details section it notes that if no values are entered for mean and sd it will use a default of 0 and 1 for these values. Because there is no default value for n it must be specified otherwise the code won’t run.</p>
-<p>Now, try running the above code for 50 participants with a mean test score of 3 and a standard deviation of 1.</p>
-<p>Remember we are asking R to create <strong>random</strong> numbers here, so do not worry if someone else has slightly different values.</p>
-<div class="solution">
-<button>
-I need a hint!
-</button>
-<p><code>n</code> in this case would be changed to 50.</p>
-<p><code>mean</code> should be changed to 3</p>
-<p><code>rnorm(50, mean = 3, sd = 1)</code></p>
-<p>now, try running the above code and see what happens.</p>
+<div id="getting-started-with-rstudio-cloud" class="section level2">
+<h2><span class="header-section-number">A.3</span> Getting Started with RStudio Cloud</h2>
+<p>Once loaded, you’ll see a page that looks almost identical to the other screenshots in the learning material</p>
+<div id="naming-the-workspace" class="section level3">
+<h3><span class="header-section-number">A.3.1</span> Naming the Workspace</h3>
+<p>Let’s give the project a better name!</p>
+<p>Click on “Untitled Project” at the top of the page</p>
+<p><img src="images/appendix/online/5.gif" alt="renaming new project"></p>
+<p>This will allow you to rename to whatever you like, in this case we’ll go for “Network Training”</p>
+<p>Press the return key on your keyboard, or click on a different area on the page to complete the task</p>
 </div>
-</div>
-<div id="tidyverse" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> Tidyverse</h3>
-<p>However, we do not always want to use R to create random numbers, we want to use it to analyse our own data which commonly resides in .csv or .sav files. People have developed many different libraries to help us work with such data. One of the most popular packages is tidyverse.</p>
-<p>The Tidyverse is a collection of R packages with a common design , grammar, and data structure that makes analysis faster and easier.</p>
-<p>The first time you want to use a package, you must first install the package. <code>tidyverse</code> can be installed as follows.</p>
-<pre class="rinstall"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
-<p>Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than <code>tidyverse</code>, simply substitute the package name.</p>
-</div>
-<div id="keeping-environment-clean" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Keeping Environment Clean</h3>
-<p>As you work, you will notice your environment will fill up with lots of variables that you have assigned.
-<img src="images/messy.png"></p>
-<p>Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
+<div id="uploading-files" class="section level3">
+<h3><span class="header-section-number">A.3.2</span> Uploading Files</h3>
+<p>Since this is on the web, files on your computer won’t be immediately accessible to RStudio Cloud, you will need to upload them yourself</p>
+<p>Click the “Upload” button on the Files tab</p>
+<p><img src="images/appendix/online/6.gif" alt="select upload to begin uploading process"></p>
+<p>An “Upload Files” element will load up where you can click “Browse” and select the file(s) you wish to make available to RStudio Cloud</p>
+<p><img src="images/appendix/online/7.gif" alt="choosing files from your computer to upload"></p>
+<p>Once you have selected a file and chosen “OK”, you’ll be taken back to the main application and you will now see the file you uploaded</p>
+<p><img src="images/appendix/online/8.png" alt="uploaded file now visible in Files tab"></p>
+<p>You can now interact with this file as described in the rest of the learning material!</p>
 
 </div>
 </div>
@@ -346,8 +331,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="starting-with-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="network-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="practical.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
