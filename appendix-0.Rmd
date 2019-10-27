@@ -2,6 +2,8 @@
 
 # RStudio Cloud
 
+Sometimes R might not work well on our own computers. However, there is an online version of R Studio (R Studio Cloud) which can be used in a pinch. Using R Studio Cloud is a little different to R Studio, so we have made a short guide to get you up and running.
+
 ## Creating an Account
 
 Head to [RStudio Cloud](https://rstudio.cloud/) and click "Sign Up" at the top of the page
@@ -12,7 +14,7 @@ Enter details you wish to sign in with and select "Sign up"
 
 <img src="images/appendix/online/2.gif" alt="enter details to create an account">
 
-You'll receive an e-mail at the address you sign up with, make sure to click the link to activate your account fully!
+You'll receive an e-mail at the address you sign up with, make sure to click the link to activate your account fully.
 
 ## Accessing RStudio Cloud
 
