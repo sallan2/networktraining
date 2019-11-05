@@ -1,7 +1,7 @@
 
 --- 
 title: "Network Analysis in R"
-date: "2019-10-27"
+date: "2019-11-05"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
