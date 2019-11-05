@@ -251,6 +251,21 @@ R is the basic package. R Studio is an add-on that make R much easier to use.
 \hypertarget{overview-2}{%
 \section{Overview}\label{overview-2}}
 
+{Working With Data}
+
+\textbf{In this session you will learn:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How to open files
+\item
+  How to write code
+\item
+  How to install packages
+\end{enumerate}
+
 This is a basic introduction to R. The material is based on the data skills course for MSc students at the University of Glasgow. Find lots of useful resources here: \url{https://gupsych.github.io/data_skills/01_intro.html}
 
 Please take a look at these free open resources in your own time.
@@ -349,12 +364,16 @@ Before beginning any new analyses it is important to clear the environment which
 \hypertarget{overview-3}{%
 \section{Overview}\label{overview-3}}
 
+This session will cover the basics of network analysis approach. Check the references section for more advanced topics.
+
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
 Recent thinking conceptulises mental wellbeing as comprising of environmental, psychological and social factors, a challenge to static factor models. Psychologists wishing to study the dynamic interaction of many factors may wish to consider a complexity science perspective such as network analysis.
 
-The frequently reported patterns of positive correlations between various cognitive tasks (e.g.~verbal comprehension and working memory) are typically explained in terms of a dominant latent factor, i.e.~the correlations reflect a hypothesised common factor of general intelligence (g). However, van der Maas (2006) and colleagues argued that this empirical pattern can also be accounted for by means of a network approach (see image below), wherein the patterns of positive relationships can be explained using a mutualism model, i.e.~the variables have mutual, reinforcing, relationships (Hevey, 2018)
+The potential utility of network analysis was noted over ten years ago in intelligence research. The frequently reported patterns of positive correlations between various cognitive tasks (e.g.~verbal comprehension and working memory) are typically explained in terms of a dominant latent factor, i.e.~the correlations reflect a hypothesised common factor of general intelligence (g). However, van der Maas (2006) and colleagues argued that this empirical pattern can also be accounted for by means of a network approach (see image below), wherein the patterns of positive relationships can be explained using a mutualism model, i.e.~the variables have mutual, reinforcing, relationships (Hevey, 2018)
+
+The image above from van der Maas (2006) demonstrates the difference between a latent factor and a network approach.
 
 \hypertarget{why-use-network-analysis-in-mental-health}{%
 \section{Why Use Network Analysis in Mental Health?}\label{why-use-network-analysis-in-mental-health}}
@@ -389,6 +408,25 @@ Remember, this needs to be saved within the working directory that you set so th
 \end{Highlighting}
 \end{Shaded}
 
+R has the \texttt{str()} function which lets us look at the structure of data. Look at \texttt{str(data)}
+
+As we can see, Gender, Place and Grade are listed as character data (words), this is not accurate and it would be better to let R know these data are factors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_factors <-}\StringTok{ }\NormalTok{data }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Gender =} \KeywordTok{as.factor}\NormalTok{(Gender),}
+         \DataTypeTok{Place =} \KeywordTok{as.factor}\NormalTok{(Place),}
+         \DataTypeTok{Grade =} \KeywordTok{as.factor}\NormalTok{(Grade),}
+         \DataTypeTok{Familyarrangement =} \KeywordTok{as.factor}\NormalTok{(Familyarrangement),}
+         \DataTypeTok{Average =} \KeywordTok{as.factor}\NormalTok{(Average),}
+         \DataTypeTok{educationFather =} \KeywordTok{as.factor}\NormalTok{(educationFather),}
+         \DataTypeTok{educationMather =} \KeywordTok{as.factor}\NormalTok{(educationMather))}
+\end{Highlighting}
+\end{Shaded}
+
+Now, if we run \texttt{str(data\_factors)} we can see that this dataframe is recognised as factors.
+
 \hypertarget{visualising-data}{%
 \section{Visualising Data}\label{visualising-data}}
 
@@ -405,7 +443,7 @@ The \# symbol in the code is a comment. Comments do not add anything to the code
 \begin{Highlighting}[]
 \CommentTok{# we are telling R we want to plot dat, we are letting R know Gender }
 \CommentTok{# is a factor on our x axis and we want to fill with colour}
-\KeywordTok{ggplot}\NormalTok{(data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.factor}\NormalTok{(Gender), }\DataTypeTok{fill =} \KeywordTok{as.factor}\NormalTok{(Gender))) }\OperatorTok{+}
+\KeywordTok{ggplot}\NormalTok{(data_factors, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Gender, }\DataTypeTok{fill =}\NormalTok{ Gender)) }\OperatorTok{+}
 \StringTok{  }\CommentTok{# we are choosing a bar plot}
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{.8}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\CommentTok{# we are naming the x scale}
@@ -450,7 +488,7 @@ The pipe operator \%\textgreater{}\% is something you will see a lot and (in ter
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{total_TEQ <-}\StringTok{ }\NormalTok{data }\OperatorTok{%>%}
+\NormalTok{total_TEQ <-}\StringTok{ }\NormalTok{data_factors }\OperatorTok{%>%}
 \KeywordTok{select}\NormalTok{(., TEQ1}\OperatorTok{:}\NormalTok{TEQ23, Pcode, Place) }\OperatorTok{%>%}
 \KeywordTok{gather}\NormalTok{(}\StringTok{"var"}\NormalTok{, }\StringTok{"score"}\NormalTok{, }\OperatorTok{-}\NormalTok{Pcode, }\OperatorTok{-}\NormalTok{Place) }\OperatorTok{%>%}
 \KeywordTok{group_by}\NormalTok{(Pcode, Place) }\OperatorTok{%>%}
@@ -488,6 +526,18 @@ Before we used \texttt{geom\_bar()} to create a barplot and this time we will us
 From looking at the graph we just created, what location tends to have highest TEQ?
 
  Village Camp City
+
+\hypertarget{recoding-factors}{%
+\section{Recoding Factors}\label{recoding-factors}}
+
+The original file has Camp, city, Village. It might be neater to have Camp, City, Village. We can easily recode the city level of the Place factor using the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{total_TEQ <-}\StringTok{ }\NormalTok{total_TEQ }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Place =} \KeywordTok{recode}\NormalTok{(Place, }\DataTypeTok{city =} \StringTok{"City"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{appendix-appendices}{%
 \appendix}

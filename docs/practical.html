@@ -162,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="practical.html"><a href="practical.html#visualising-data---practical"><i class="fa fa-check"></i><b>4.3</b> Visualising Data - Practical</a></li>
 <li class="chapter" data-level="4.4" data-path="practical.html"><a href="practical.html#working-with-data"><i class="fa fa-check"></i><b>4.4</b> Working With Data</a></li>
 <li class="chapter" data-level="4.5" data-path="practical.html"><a href="practical.html#plotting-data"><i class="fa fa-check"></i><b>4.5</b> Plotting Data</a></li>
+<li class="chapter" data-level="4.6" data-path="practical.html"><a href="practical.html#recoding-factors"><i class="fa fa-check"></i><b>4.6</b> Recoding Factors</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>A</b> RStudio Cloud</a><ul>
@@ -206,6 +207,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Remember, this needs to be saved within the working directory that you set so that R knows where to find it.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;networkdataset.csv&quot;</span>)</a></code></pre></div>
+<p>R has the <code>str()</code> function which lets us look at the structure of data. Look at <code>str(data)</code></p>
+<p>As we can see, Gender, Place and Grade are listed as character data (words), this is not accurate and it would be better to let R know these data are factors.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">data_factors &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">as.factor</span>(Gender),</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">         <span class="dt">Place =</span> <span class="kw">as.factor</span>(Place),</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">         <span class="dt">Grade =</span> <span class="kw">as.factor</span>(Grade),</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">         <span class="dt">Familyarrangement =</span> <span class="kw">as.factor</span>(Familyarrangement),</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">         <span class="dt">Average =</span> <span class="kw">as.factor</span>(Average),</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">         <span class="dt">educationFather =</span> <span class="kw">as.factor</span>(educationFather),</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">         <span class="dt">educationMather =</span> <span class="kw">as.factor</span>(educationMather))</a></code></pre></div>
+<p>Now, if we run <code>str(data_factors)</code> we can see that this dataframe is recognised as factors.</p>
 </div>
 <div id="visualising-data" class="section level2">
 <h2><span class="header-section-number">4.2</span> Visualising Data</h2>
@@ -215,17 +227,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> Visualising Data - Practical</h2>
 <p>How many females and males?</p>
 <p>The # symbol in the code is a comment. Comments do not add anything to the code but are there for human understanding to explain what is happening in the code. Look at the comments in the code below to understand what is going on.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># is a factor on our x axis and we want to fill with colour</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Gender), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Gender))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="co"># we are choosing a bar plot</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="co"># we are naming the x scale</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="st">  </span><span class="co"># we are naming the y scale</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># is a factor on our x axis and we want to fill with colour</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">ggplot</span>(data_factors, <span class="kw">aes</span>(<span class="dt">x =</span> Gender, <span class="dt">fill =</span> Gender)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="co"># we are choosing a bar plot</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="co"># we are naming the x scale</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="st">  </span><span class="co"># we are naming the y scale</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:graph"></span>
 <img src="04-s01-lab02a_files/figure-html/graph-1.png" alt="Participant Gender" width="100%" />
 <p class="caption">
@@ -244,21 +256,21 @@ Figure 4.1: Participant Gender
 <li>We then use <code>group_by(Pcode, Place)</code> as we want to look at scores for each participant and where they live</li>
 <li>Finally <code>summarise(tot_TEQ = sum(score))</code> creates a column named tot_TEQ which has the total TEQ score for each participant.</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>data_factors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</a></code></pre></div>
 </div>
 <div id="plotting-data" class="section level2">
 <h2><span class="header-section-number">4.5</span> Plotting Data</h2>
 <p>Now we can visualise <code>total_TEQ</code>.</p>
 <p>When visualising differences between groups in numerical values, people have historically used bar graphs. There is currently a shift taking place, with people moving away from bar graphs, and towards more informative visualisations.</p>
 <p>Before we used <code>geom_bar()</code> to create a barplot and this time we will use <code>geom_violin()</code> to create a violin plot. In the violin plot, the width of the area indicates the density of the data at that point on the y axis. We have also included a box plot using <code>geom_boxplot</code> within this graph to show another option.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:graph2"></span>
 <img src="04-s01-lab02a_files/figure-html/graph2-1.png" alt="TEQ Scores" width="100%" />
 <p class="caption">
@@ -267,6 +279,12 @@ Figure 4.2: TEQ Scores
 </div>
 <p>From looking at the graph we just created, what location tends to have highest TEQ?</p>
 <p><select class='solveme' data-answer='["Camp"]'> <option></option> <option>Village</option> <option>Camp</option> <option>City</option></select></p>
+</div>
+<div id="recoding-factors" class="section level2">
+<h2><span class="header-section-number">4.6</span> Recoding Factors</h2>
+<p>The original file has Camp, city, Village. It might be neater to have Camp, City, Village. We can easily recode the city level of the Place factor using the following code.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>total_TEQ <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Place =</span> <span class="kw">recode</span>(Place, <span class="dt">city =</span> <span class="st">&quot;City&quot;</span>))</a></code></pre></div>
 
 </div>
 </div>

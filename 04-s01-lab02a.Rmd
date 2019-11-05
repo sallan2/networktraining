@@ -15,6 +15,24 @@ library(tidyverse)
 data <- read_csv("networkdataset.csv")
 ```
 
+R has the `str()` function which lets us look at the structure of data. Look at `str(data)`
+
+As we can see, Gender, Place and Grade are listed as character data (words), this is not accurate and it would be better to let R know these data are factors.
+
+```{r factors}
+
+data_factors <- data %>%
+  mutate(Gender = as.factor(Gender),
+         Place = as.factor(Place),
+         Grade = as.factor(Grade),
+         Familyarrangement = as.factor(Familyarrangement),
+         Average = as.factor(Average),
+         educationFather = as.factor(educationFather),
+         educationMather = as.factor(educationMather))
+```
+
+Now, if we run `str(data_factors)` we can see that this dataframe is recognised as factors.
+
 ## Visualising Data
 
 To do - write a bit about plotting options in R.
@@ -29,7 +47,7 @@ The # symbol in the code is a comment. Comments do not add anything to the code 
 ```{r graph, fig.cap="Participant Gender"}
 # we are telling R we want to plot dat, we are letting R know Gender 
 # is a factor on our x axis and we want to fill with colour
-ggplot(data, aes(x = as.factor(Gender), fill = as.factor(Gender))) +
+ggplot(data_factors, aes(x = Gender, fill = Gender)) +
   # we are choosing a bar plot
   geom_bar(show.legend = FALSE, alpha = .8) +
   # we are naming the x scale
@@ -55,11 +73,12 @@ The pipe operator %>% is something you will see a lot and (in terms of code) mea
 
 ```{r wrangling}
 
-total_TEQ <- data %>%
+total_TEQ <- data_factors %>%
 select(., TEQ1:TEQ23, Pcode, Place) %>%
 gather("var", "score", -Pcode, -Place) %>%
 group_by(Pcode, Place) %>%
 summarise(tot_TEQ = sum(score))
+
 
 ```
 
@@ -82,3 +101,15 @@ ggplot(total_TEQ, aes(x = as.factor(Place), fill = as.factor(Place), y = tot_TEQ
 From looking at the graph we just created, what location tends to have highest TEQ?
 
 `r mcq(c("Village", answer = "Camp", "City"))`  
+
+## Recoding Factors
+
+The original file has Camp, city, Village. It might be neater to have Camp, City, Village. We can easily recode the city level of the Place factor using the following code.
+
+
+```{r recoding}
+total_TEQ <- total_TEQ %>%
+    mutate(Place = recode(Place, city = "City"))
+```
+
+
