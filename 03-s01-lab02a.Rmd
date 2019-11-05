@@ -17,8 +17,8 @@ The frequently reported patterns of positive correlations between various cognit
 
 ## What is a network?
 
-A network is a set of nodes connected by a set of edges. A network (as collection of various nodes and edges) can be defined as a graph
+A network is a set of nodes connected by a set of edges. A network (as collection of various nodes and edges) is also sometimes known as a graph.
 
 Several packages are used in the network analysis, including `network`, `statnet`, `igraph` and `qgraph`.
 
-qgraph was developed in the context of psychometrics approach by Dr. Sacha Epskamp and colleagues in 2012. We will be be working with `qgraph`.
+qgraph was developed in the context of psychometrics approach by Dr. Sacha Epskamp and colleagues in 2012. We will be be working with `qgraph`. Please `install.packages("qgraph")` so we can get started.
