@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-11-05}
+    \date{2019-11-06}
 
 \usepackage{booktabs}
 
@@ -225,6 +225,8 @@ Install base R from \url{https://cran.rstudio.com/}. Choose the download link fo
 
 Go to \url{https://rstudio.com} and download the RStudio Desktop (Open Source License) version for your operating system under the list titled \textbf{Installers for Supported Platforms.}
 
+If you are using a Mac, please install \href{https://www.xquartz.org/}{XQuartz}
+
 \hypertarget{quiz}{%
 \subsection{Quiz}\label{quiz}}
 
@@ -243,7 +245,21 @@ Explain This Answer!
 R is the basic package. R Studio is an add-on that make R much easier to use.
 
 \hypertarget{where-to-get-help}{%
-\subsection{Where to Get Help}\label{where-to-get-help}}
+\section{Where to Get Help}\label{where-to-get-help}}
+
+Learning R can take time. Please do not feel that you have to grasp everything right away and it is totally ok to copy and paste.
+
+\hypertarget{google}{%
+\subsection{Google}\label{google}}
+
+``Never commit to memory what can be easily looked up in books''
+
+Often people simply google what they want to achieve in R. For example, in preparing this tutorial I googled ``how to run a linear mixed effects model in R'' and found the following \href{https://ourcodingclub.github.io/2017/03/15/mixed-models.html}{helpful tutorial} This is just one of many examples of resources that are available.
+
+\hypertarget{stackoverflow}{%
+\subsection{Stackoverflow}\label{stackoverflow}}
+
+\href{https://stackoverflow.com}{Stackoverflow} is a website where you can ask for help on bits of coding that you are struggling with. You can search for commonly asked questions and responses.
 
 \hypertarget{working-with-data-in-r}{%
 \chapter{Working With Data in R}\label{working-with-data-in-r}}
@@ -345,6 +361,11 @@ install.packages("tidyverse")
 
 Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than \texttt{tidyverse}, simply substitute the package name.
 
+\hypertarget{scripts}{%
+\section{Scripts}\label{scripts}}
+
+So far we have been typing into the console but that means all work is lost when re-start R. We can save data in scripts. To create a new script select the option from the File menu.
+
 \hypertarget{keeping-environment-clean}{%
 \subsection{Keeping Environment Clean}\label{keeping-environment-clean}}
 
@@ -385,12 +406,99 @@ The image above from van der Maas (2006) demonstrates the difference between a l
 
 A network is a set of nodes connected by a set of edges. A network (as collection of various nodes and edges) is also sometimes known as a graph.
 
+A node (in psychological research) can represent a single item from a scale, a sub-scale, or a composite scale: the choice of node depends upon the type of data that provide the most appropriate and useful understanding of the questions to be addressed. Edges can represent different types of relationships, e.g.~co-morbidity of psychological symptoms.
+
 Several packages are used in the network analysis, including \texttt{network}, \texttt{statnet}, \texttt{igraph} and \texttt{qgraph}.
 
-qgraph was developed in the context of psychometrics approach by Dr.~Sacha Epskamp and colleagues in 2012. We will be be working with \texttt{qgraph}. Please \texttt{install.packages("qgraph")} so we can get started.
+qgraph was developed in the context of psychometrics approach by Dr.~Sacha Epskamp and colleagues in 2012. We will be be working with \texttt{qgraph} and \texttt{bootnet}. Please \texttt{install.packages("qgraph")} (which we will use now) and `install.packages(``bootnet'') (which we will use later) so we can get started.
+
+Now, let us load up \texttt{qgraph} - remember and save all of your code into a script.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(qgraph)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{drawing-matrices}{%
+\section{Drawing Matrices}\label{drawing-matrices}}
+
+First, we will create a blank matrix with the following code. Here, we are asking R to create a matrix with 3 rows and 3 columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Matrix <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{,}\DataTypeTok{ncol=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{colnames}\NormalTok{(Matrix) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Node1"}\NormalTok{,}\StringTok{"Node2"}\NormalTok{,}\StringTok{"Node3"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now, we would like to add some data. We are mapping edges between nodes. For example, in the first line of code below ``3'' is the weighted edge between node 1 and 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Matrix[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Node1 Node2 Node3
+## [1,]     0     3     0
+## [2,]     3     0     3
+## [3,]     0     3     0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qgraph}\NormalTok{(Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{03-s01-lab02a_files/figure-latex/qgraph-1} 
+
+}
+
+\caption{Matrix Visualisation}\label{fig:qgraph}
+\end{figure}
+
+\hypertarget{task}{%
+\section{Task}\label{task}}
+
+Change the Matrix values and visualise the result using qgraph. Feel free to try negative numbers too.
+
+Click to see Code
+
+Matrix{[}1,2{]} \textless{}- 3
+Matrix{[}2,1{]} \textless{}- 3
+Matrix{[}2,3{]} \textless{}- -3
+Matrix{[}3,2{]} \textless{}- 3
+
+qgraph(Matrix)
 
 \hypertarget{practical}{%
 \chapter{Practical}\label{practical}}
+
+\textbf{In this session you will learn:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How to work with original data
+\item
+  How to define factors
+\item
+  How to wrangle data
+\item
+  How to visualise data
+\item
+  How to run a simple network analysis.
+\end{enumerate}
 
 \hypertarget{description-of-data}{%
 \section{Description of Data}\label{description-of-data}}
@@ -404,6 +512,18 @@ Remember, this needs to be saved within the working directory that you set so th
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(bootnet)}
+\KeywordTok{library}\NormalTok{(qgraph)}
+\KeywordTok{library}\NormalTok{(summarytools)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in fun(libname, pkgname): couldn't connect to display ":0"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"networkdataset.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -532,12 +652,91 @@ From looking at the graph we just created, what location tends to have highest T
 
 The original file has Camp, city, Village. It might be neater to have Camp, City, Village. We can easily recode the city level of the Place factor using the following code.
 
+If you re-run the code for the graph now, this should be updated.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{total_TEQ <-}\StringTok{ }\NormalTok{total_TEQ }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Place =} \KeywordTok{recode}\NormalTok{(Place, }\DataTypeTok{city =} \StringTok{"City"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{simple-network}{%
+\section{Simple Network}\label{simple-network}}
+
+When creating a network, it is important to think about how complex it will be. The higher the number of nodes being examined, then the higher the number of edges have to be estimated. Too many nodes results in networks that are unstable.
+
+In this example, we will create a simple network from the single question items of the PAQ (Parental Authority Questionnaire).
+
+First, we will select the PAQ items from data\_factors:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PAQ <-}\StringTok{ }\NormalTok{data_factors }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(PAQ1}\OperatorTok{:}\NormalTok{PAQ12)}
+\end{Highlighting}
+\end{Shaded}
+
+Like all statistical techniques that use sample data to estimate parameters, the correlation and partial correlations values will be influenced by sampling variations and exact zeros will be rarely observed in the matrices. Consequently, correlation networks will nearly always be fully connected networks, possibly with small weights on many of the edges that reflect weak and potentially spurious partial correlations.
+
+Spurious relationships will be problematic in terms of the network interpretation and will compromise the potential for network replication. In order to limit the number of such spurious relationships, a statistical regularisation technique, which takes into account the model complexity, is frequently used.
+
+The LASSO regularisation yields a more parsimonious network (fewer connections between nodes), assumed to reflect only the most ``important'' empirical relationships in the data. The LASSO utilizes a tuning parameter λ (lambda) that controls the level of sparsity. The tuning parameter directly controls how much the likelihood is penalized for the sum of absolute parameter values. When the tuning parameter is low, only a few edges are removed, likely resulting in the retention of spurious edges. When the tuning parameter is high, many edges are removed, likely resulting in the removal of true edges in addition to the removal of spurious edges. EBICglasso sets a tuning parameter of 0.5 by default.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Network <-}\StringTok{ }\KeywordTok{estimateNetwork}\NormalTok{(PAQ, }\DataTypeTok{default =} \StringTok{"EBICglasso"}\NormalTok{, }\DataTypeTok{corMethod =} \StringTok{"cor_auto"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The size and density of the edges between the nodes respresent the strength of connectedness. Positively related nodes are shown in { blue} and negatively related nodes are shown in {red}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(Network, }\DataTypeTok{layout=}\StringTok{"spring"}\NormalTok{, }\DataTypeTok{labels=}\KeywordTok{colnames}\NormalTok{(PAQ))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{04-s01-lab02a_files/figure-latex/Plotting-1} 
+
+}
+
+\caption{PAQ Network Graph}\label{fig:Plotting}
+\end{figure}
+
+\hypertarget{interpretation}{%
+\section{Interpretation}\label{interpretation}}
+
+The network shows the strength of relationships between the TPB variables. Some variables have quite strong connections (e.g.~PAQ12 and PAQ11), whereas others have weak relationship (e.g.~PAQ 7 and PAQ3). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network.
+
+A key concept in network analysis is the centrality of the symptom: if a behaviour or symptom (e.g.~fatigue) has many and/or strong associations to other nodes, they are more central within the network than a less connected symptom.There are different centrality metrics, and \emph{strength} most often used. Expected influence is related to strength but argued to be a \href{https://psych-networks.com/expected-influence-new-centrality-metric-robinaugh-et-al-2016/}{better metric} - adapted from open source materials by \href{https://derekdebeurs.github.io/esssb17/}{Derek DeBuers}
+
+From looking at both strength and expected influence, it appears PAQ12 and PAQ8 have the strongest influence on the nodes in the network. How might we interpret this? Network analysis is purely statistical, the measurement and inclusion of nodes depend on your theory / research question.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{centralityPlot}\NormalTok{(Network, }\DataTypeTok{include =} \KeywordTok{c}\NormalTok{(}\StringTok{"Strength"}\NormalTok{,}\StringTok{"ExpectedInfluence"}\NormalTok{),}
+               \DataTypeTok{orderBy =} \StringTok{"ExpectedInfluence"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{04-s01-lab02a_files/figure-latex/Pcentrality-1} 
+
+}
+
+\caption{Centrality Plot}\label{fig:Pcentrality}
+\end{figure}
+
+\hypertarget{issues}{%
+\section{Issues}\label{issues}}
+
+This assumes normally disturbuted data which can be rare in psychology where Likert scales (such as that used to measure data here) are common.
+
+``our data did not meet all assumptions of multivariate normality. This is not unusual in psychology, but as it is unclear at present how robust the employed methods are to such violations, results need to be interpreted with caution.'' \href{https://openaccess.leidenuniv.nl/bitstream/handle/1887/73951/Aalbers_et_al_2018_T.pdf?sequence=1}{(Aalbers, 2019)}
 
 \hypertarget{appendix-appendices}{%
 \appendix}
@@ -603,6 +802,8 @@ You can now interact with this file as described in the rest of the learning mat
 \href{http://sachaepskamp.com/files/Cookbook.html}{Network Analysis Cookbook - Also covers R introduction}
 
 \href{https://psyteachr.github.io/}{We are grateful to PsyTeachR from the University of Glasgow} for allowing us to build upon their open source teaching materials.
+
+\href{https://www.tandfonline.com/doi/full/10.1080/21642850.2018.1521283}{Network Analysis Tutorial}
 
 \bibliography{book.bib,packages.bib}
 

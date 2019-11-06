@@ -25,6 +25,9 @@ Install base R from [https://cran.rstudio.com/](https://cran.rstudio.com/){targe
 
 Go to [https://rstudio.com](https://rstudio.com){target="_blank"} and download the RStudio Desktop (Open Source License) version for your operating system under the list titled **Installers for Supported Platforms.**
 
+If you are using a Mac, please install [XQuartz](https://www.xquartz.org/){target="_blank"}
+
+
 
 ### Quiz
 
@@ -40,4 +43,16 @@ R is the basic package. R Studio is an add-on that make R much easier to use.
 ```
 `r unhide()`  
 
-### Where to Get Help
+## Where to Get Help
+
+Learning R can take time. Please do not feel that you have to grasp everything right away and it is totally ok to copy and paste.
+
+### Google
+
+"Never commit to memory what can be easily looked up in books" 
+
+Often people simply google what they want to achieve in R. For example, in preparing this tutorial I googled "how to run a linear mixed effects model in R" and found the following [helpful tutorial](https://ourcodingclub.github.io/2017/03/15/mixed-models.html){target="_blank"} This is just one of many examples of resources that are available.
+
+### Stackoverflow
+
+[Stackoverflow](https://stackoverflow.com) is a website where you can ask for help on bits of coding that you are struggling with. You can search for commonly asked questions and responses.
