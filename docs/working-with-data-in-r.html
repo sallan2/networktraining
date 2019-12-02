@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-11-06" />
+<meta name="date" content="2019-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.1.4</b> Tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#scripts"><i class="fa fa-check"></i><b>2.2</b> Scripts</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.1</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.1</b> Opening SPSS Files</a></li>
+<li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.2</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -269,12 +270,24 @@ I need a hint!
 <div id="scripts" class="section level2">
 <h2><span class="header-section-number">2.2</span> Scripts</h2>
 <p>So far we have been typing into the console but that means all work is lost when re-start R. We can save data in scripts. To create a new script select the option from the File menu.</p>
+<div id="opening-spss-files" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Opening SPSS Files</h3>
+<p>The <code>foreign</code> package allows easy opening of .sav files which are associated with SPSS.</p>
+<p>You can either set a path to open up an SPSS file or run <code>file.choose()</code> and pick the file manually.</p>
+<p>To use foreign, we need to first install the package, same as we did with tidyverse. Follow the instructions for installing tidyverse and subsitute the package name.</p>
+<details>
+<p><summary>Click to see solution…</summary></p>
+<pre class="rforeign"><code>install.packages(&quot;foreign&quot;)</code></pre>
+<p>Once you have installed packages, .sav files can be opened using the following code:</p>
+<p><code>dataset = read.spss(&quot;YOURFILENAMEHERE.sav&quot;, to.data.frame=TRUE)</code></p>
+<p>While we are not using spss files during this training, it is useful to know how to do this.</p>
+</div>
 <div id="keeping-environment-clean" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Keeping Environment Clean</h3>
+<h3><span class="header-section-number">2.2.2</span> Keeping Environment Clean</h3>
 <p>As you work, you will notice your environment will fill up with lots of variables that you have assigned.
 <img src="images/messy.png"></p>
 <p>Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
 
 </div>
 </div>

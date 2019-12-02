@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-11-06" />
+<meta name="date" content="2019-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.1.4</b> Tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#scripts"><i class="fa fa-check"></i><b>2.2</b> Scripts</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.1</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.1</b> Opening SPSS Files</a></li>
+<li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.2</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -223,22 +224,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will work with a local dataset gathered from high school age children. Please download the .csv file <a href="data/networkdataset.csv">HERE</a> (you might need to right click and choose save as).</p>
 <p>First, we need to make sure we have <code>tidyverse</code> loaded and then open the file. We are creating a data frame called which we will assign to our .csv file.</p>
 <p>Remember, this needs to be saved within the working directory that you set so that R knows where to find it.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">library</span>(bootnet)</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">library</span>(qgraph)</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="kw">library</span>(summarytools)</a></code></pre></div>
-<pre><code>## Warning in fun(libname, pkgname): couldn&#39;t connect to display &quot;:0&quot;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;networkdataset.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">library</span>(bootnet)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">library</span>(qgraph)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="kw">library</span>(summarytools)</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;networkdataset.csv&quot;</span>)</a></code></pre></div>
 <p>R has the <code>str()</code> function which lets us look at the structure of data. Look at <code>str(data)</code></p>
 <p>As we can see, Gender, Place and Grade are listed as character data (words), this is not accurate and it would be better to let R know these data are factors.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">data_factors &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">as.factor</span>(Gender),</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">         <span class="dt">Place =</span> <span class="kw">as.factor</span>(Place),</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">         <span class="dt">Grade =</span> <span class="kw">as.factor</span>(Grade),</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">         <span class="dt">Familyarrangement =</span> <span class="kw">as.factor</span>(Familyarrangement),</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">         <span class="dt">Average =</span> <span class="kw">as.factor</span>(Average),</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">         <span class="dt">educationFather =</span> <span class="kw">as.factor</span>(educationFather),</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">         <span class="dt">educationMather =</span> <span class="kw">as.factor</span>(educationMather))</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">data_factors &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">as.factor</span>(Gender),</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">         <span class="dt">Place =</span> <span class="kw">as.factor</span>(Place),</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">         <span class="dt">Grade =</span> <span class="kw">as.factor</span>(Grade),</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">         <span class="dt">Familyarrangement =</span> <span class="kw">as.factor</span>(Familyarrangement),</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">         <span class="dt">Average =</span> <span class="kw">as.factor</span>(Average),</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">         <span class="dt">educationFather =</span> <span class="kw">as.factor</span>(educationFather),</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">         <span class="dt">educationMather =</span> <span class="kw">as.factor</span>(educationMather))</a></code></pre></div>
 <p>Now, if we run <code>str(data_factors)</code> we can see that this dataframe is recognised as factors.</p>
 </div>
 <div id="visualising-data" class="section level2">
@@ -249,17 +249,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> Visualising Data - Practical</h2>
 <p>How many females and males?</p>
 <p>The # symbol in the code is a comment. Comments do not add anything to the code but are there for human understanding to explain what is happening in the code. Look at the comments in the code below to understand what is going on.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># is a factor on our x axis and we want to fill with colour</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">ggplot</span>(data_factors, <span class="kw">aes</span>(<span class="dt">x =</span> Gender, <span class="dt">fill =</span> Gender)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="co"># we are choosing a bar plot</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st">  </span><span class="co"># we are naming the x scale</span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="st">  </span><span class="co"># we are naming the y scale</span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># we are telling R we want to plot dat, we are letting R know Gender </span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># is a factor on our x axis and we want to fill with colour</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="kw">ggplot</span>(data_factors, <span class="kw">aes</span>(<span class="dt">x =</span> Gender, <span class="dt">fill =</span> Gender)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="co"># we are choosing a bar plot</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="co"># we are naming the x scale</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Gender&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="st">  </span><span class="co"># we are chosing a colour scheme from pre-exising options</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="st">  </span><span class="co"># we are naming the y scale</span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:graph"></span>
 <img src="04-s01-lab02a_files/figure-html/graph-1.png" alt="Participant Gender" width="100%" />
 <p class="caption">
@@ -278,21 +278,21 @@ Figure 4.1: Participant Gender
 <li>We then use <code>group_by(Pcode, Place)</code> as we want to look at scores for each participant and where they live</li>
 <li>Finally <code>summarise(tot_TEQ = sum(score))</code> creates a column named tot_TEQ which has the total TEQ score for each participant.</li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>data_factors <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>data_factors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">select</span>(., TEQ1<span class="op">:</span>TEQ23, Pcode, Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="kw">gather</span>(<span class="st">&quot;var&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="op">-</span>Pcode, <span class="op">-</span>Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="kw">group_by</span>(Pcode, Place) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw">summarise</span>(<span class="dt">tot_TEQ =</span> <span class="kw">sum</span>(score))</a></code></pre></div>
 </div>
 <div id="plotting-data" class="section level2">
 <h2><span class="header-section-number">4.5</span> Plotting Data</h2>
 <p>Now we can visualise <code>total_TEQ</code>.</p>
 <p>When visualising differences between groups in numerical values, people have historically used bar graphs. There is currently a shift taking place, with people moving away from bar graphs, and towards more informative visualisations.</p>
 <p>Before we used <code>geom_bar()</code> to create a barplot and this time we will use <code>geom_violin()</code> to create a violin plot. In the violin plot, the width of the area indicates the density of the data at that point on the y axis. We have also included a box plot using <code>geom_boxplot</code> within this graph to show another option.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ggplot</span>(total_TEQ, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(Place), <span class="dt">fill =</span> <span class="kw">as.factor</span>(Place), <span class="dt">y =</span> tot_TEQ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_violin</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Total TEQ&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Place&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:graph2"></span>
 <img src="04-s01-lab02a_files/figure-html/graph2-1.png" alt="TEQ Scores" width="100%" />
 <p class="caption">
@@ -306,22 +306,22 @@ Figure 4.2: TEQ Scores
 <h2><span class="header-section-number">4.6</span> Recoding Factors</h2>
 <p>The original file has Camp, city, Village. It might be neater to have Camp, City, Village. We can easily recode the city level of the Place factor using the following code.</p>
 <p>If you re-run the code for the graph now, this should be updated.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>total_TEQ <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Place =</span> <span class="kw">recode</span>(Place, <span class="dt">city =</span> <span class="st">&quot;City&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">total_TEQ &lt;-<span class="st"> </span>total_TEQ <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Place =</span> <span class="kw">recode</span>(Place, <span class="dt">city =</span> <span class="st">&quot;City&quot;</span>))</a></code></pre></div>
 </div>
 <div id="simple-network" class="section level2">
 <h2><span class="header-section-number">4.7</span> Simple Network</h2>
 <p>When creating a network, it is important to think about how complex it will be. The higher the number of nodes being examined, then the higher the number of edges have to be estimated. Too many nodes results in networks that are unstable.</p>
 <p>In this example, we will create a simple network from the single question items of the PAQ (Parental Authority Questionnaire).</p>
 <p>First, we will select the PAQ items from data_factors:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">PAQ &lt;-<span class="st"> </span>data_factors <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(PAQ1<span class="op">:</span>PAQ12)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">PAQ &lt;-<span class="st"> </span>data_factors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(PAQ1<span class="op">:</span>PAQ12)</a></code></pre></div>
 <p>Like all statistical techniques that use sample data to estimate parameters, the correlation and partial correlations values will be influenced by sampling variations and exact zeros will be rarely observed in the matrices. Consequently, correlation networks will nearly always be fully connected networks, possibly with small weights on many of the edges that reflect weak and potentially spurious partial correlations.</p>
 <p>Spurious relationships will be problematic in terms of the network interpretation and will compromise the potential for network replication. In order to limit the number of such spurious relationships, a statistical regularisation technique, which takes into account the model complexity, is frequently used.</p>
 <p>The LASSO regularisation yields a more parsimonious network (fewer connections between nodes), assumed to reflect only the most “important” empirical relationships in the data. The LASSO utilizes a tuning parameter λ (lambda) that controls the level of sparsity. The tuning parameter directly controls how much the likelihood is penalized for the sum of absolute parameter values. When the tuning parameter is low, only a few edges are removed, likely resulting in the retention of spurious edges. When the tuning parameter is high, many edges are removed, likely resulting in the removal of true edges in addition to the removal of spurious edges. EBICglasso sets a tuning parameter of 0.5 by default.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">Network &lt;-<span class="st"> </span><span class="kw">estimateNetwork</span>(PAQ, <span class="dt">default =</span> <span class="st">&quot;EBICglasso&quot;</span>, <span class="dt">corMethod =</span> <span class="st">&quot;cor_auto&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">Network &lt;-<span class="st"> </span><span class="kw">estimateNetwork</span>(PAQ, <span class="dt">default =</span> <span class="st">&quot;EBICglasso&quot;</span>, <span class="dt">corMethod =</span> <span class="st">&quot;cor_auto&quot;</span>)</a></code></pre></div>
 <p>The size and density of the edges between the nodes respresent the strength of connectedness. Positively related nodes are shown in <span style="color:blue"> blue</span> and negatively related nodes are shown in <span style="color:red">red</span>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">plot</span>(Network, <span class="dt">layout=</span><span class="st">&quot;spring&quot;</span>, <span class="dt">labels=</span><span class="kw">colnames</span>(PAQ))</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">plot</span>(Network, <span class="dt">layout=</span><span class="st">&quot;spring&quot;</span>, <span class="dt">labels=</span><span class="kw">colnames</span>(PAQ))</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Plotting"></span>
 <img src="04-s01-lab02a_files/figure-html/Plotting-1.png" alt="PAQ Network Graph" width="100%" />
 <p class="caption">
@@ -334,8 +334,8 @@ Figure 4.3: PAQ Network Graph
 <p>The network shows the strength of relationships between the TPB variables. Some variables have quite strong connections (e.g. PAQ12 and PAQ11), whereas others have weak relationship (e.g. PAQ 7 and PAQ3). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network.</p>
 <p>A key concept in network analysis is the centrality of the symptom: if a behaviour or symptom (e.g. fatigue) has many and/or strong associations to other nodes, they are more central within the network than a less connected symptom.There are different centrality metrics, and <em>strength</em> most often used. Expected influence is related to strength but argued to be a <a href="https://psych-networks.com/expected-influence-new-centrality-metric-robinaugh-et-al-2016/">better metric</a> - adapted from open source materials by <a href="https://derekdebeurs.github.io/esssb17/">Derek DeBuers</a></p>
 <p>From looking at both strength and expected influence, it appears PAQ12 and PAQ8 have the strongest influence on the nodes in the network. How might we interpret this? Network analysis is purely statistical, the measurement and inclusion of nodes depend on your theory / research question.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">centralityPlot</span>(Network, <span class="dt">include =</span> <span class="kw">c</span>(<span class="st">&quot;Strength&quot;</span>,<span class="st">&quot;ExpectedInfluence&quot;</span>),</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">               <span class="dt">orderBy =</span> <span class="st">&quot;ExpectedInfluence&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">centralityPlot</span>(Network, <span class="dt">include =</span> <span class="kw">c</span>(<span class="st">&quot;Strength&quot;</span>,<span class="st">&quot;ExpectedInfluence&quot;</span>),</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">               <span class="dt">orderBy =</span> <span class="st">&quot;ExpectedInfluence&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Pcentrality"></span>
 <img src="04-s01-lab02a_files/figure-html/Pcentrality-1.png" alt="Centrality Plot" width="100%" />
 <p class="caption">

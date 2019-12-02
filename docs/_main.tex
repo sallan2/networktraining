@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-11-06}
+    \date{2019-12-02}
 
 \usepackage{booktabs}
 
@@ -252,14 +252,16 @@ Learning R can take time. Please do not feel that you have to grasp everything r
 \hypertarget{google}{%
 \subsection{Google}\label{google}}
 
-``Never commit to memory what can be easily looked up in books''
+\textbf{``Never commit to memory what can be easily looked up in books''}
 
-Often people simply google what they want to achieve in R. For example, in preparing this tutorial I googled ``how to run a linear mixed effects model in R'' and found the following \href{https://ourcodingclub.github.io/2017/03/15/mixed-models.html}{helpful tutorial} This is just one of many examples of resources that are available.
+Often people simply google what they want to achieve in R. For example, in preparing this tutorial I googled ``how to run a linear mixed effects model in R'' (as I did not know) and found the following \href{https://ourcodingclub.github.io/2017/03/15/mixed-models.html}{helpful tutorial} which goes through all the steps. This is just one of many examples of resources that are available.
 
 \hypertarget{stackoverflow}{%
 \subsection{Stackoverflow}\label{stackoverflow}}
 
 \href{https://stackoverflow.com}{Stackoverflow} is a website where you can ask for help on bits of coding that you are struggling with. You can search for commonly asked questions and responses.
+
+Feel free to google any time.
 
 \hypertarget{working-with-data-in-r}{%
 \chapter{Working With Data in R}\label{working-with-data-in-r}}
@@ -366,6 +368,27 @@ Once the package has been installed, any time you want to use the package you us
 
 So far we have been typing into the console but that means all work is lost when re-start R. We can save data in scripts. To create a new script select the option from the File menu.
 
+\hypertarget{opening-spss-files}{%
+\subsection{Opening SPSS Files}\label{opening-spss-files}}
+
+The \texttt{foreign} package allows easy opening of .sav files which are associated with SPSS.
+
+You can either set a path to open up an SPSS file or run \texttt{file.choose()} and pick the file manually.
+
+To use foreign, we need to first install the package, same as we did with tidyverse. Follow the instructions for installing tidyverse and subsitute the package name.
+
+Click to see solution\ldots{}
+
+\begin{verbatim}
+install.packages("foreign")
+\end{verbatim}
+
+Once you have installed packages, .sav files can be opened using the following code:
+
+\texttt{dataset\ =\ read.spss("YOURFILENAMEHERE.sav",\ to.data.frame=TRUE)}
+
+While we are not using spss files during this training, it is useful to know how to do this.
+
 \hypertarget{keeping-environment-clean}{%
 \subsection{Keeping Environment Clean}\label{keeping-environment-clean}}
 
@@ -399,7 +422,9 @@ The image above from van der Maas (2006) demonstrates the difference between a l
 \hypertarget{why-use-network-analysis-in-mental-health}{%
 \section{Why Use Network Analysis in Mental Health?}\label{why-use-network-analysis-in-mental-health}}
 
-``Analysis of mental health data is usually based on sum-scores of symptoms or the estimation of factor models. Both types of analyses disregard direct associations among symptoms that are well-understood in clinical practice: mental disorders can be conceptualized as vicious circles of problems that are hard to escape. A novel research framework, the network perspective on psychopathology, understands mental disorders as complex networks of interacting symptoms'' (Fried, 2018)
+``Analysis of mental health data is usually based on sum-scores of symptoms or the estimation of factor models. Both types of analyses disregard direct associations among symptoms that are well-understood in clinical practice: mental health problems can be conceptualized as vicious circles of problems that are hard to escape. A novel research framework, the network perspective on psychopathology, understands mental disorders as complex networks of interacting symptoms'' (Fried, 2018)
+
+However, mental health networks can contain more than just symptoms. \href{https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2671414?casa_token=nGUSw-yIg1YAAAAA\%3aXJz4Ehq44lBBE3iDqQhuNSGgJfafMX9lGyiDx9YxHJpVSFVOJo0gkA0NdrEGhY9T-6mvlB17}{In a study looking at patients with schizophrenia} the researchers wanted to understand the extent to which variables belonging to the same construct were connected and how different constructs mutually interacted and reinforced one another. In addition to modelling symptoms, the researchers also looked at engagement with mental health services and interpersonal relationships. This is important when we want to explore what wider influences might impact upon behaviour we are interested in.
 
 \hypertarget{what-is-a-network}{%
 \section{What is a network?}\label{what-is-a-network}}
@@ -425,14 +450,26 @@ Now, let us load up \texttt{qgraph} - remember and save all of your code into a 
 
 First, we will create a blank matrix with the following code. Here, we are asking R to create a matrix with 3 rows and 3 columns.
 
+The code \texttt{colnames(Matrix)\ \textless{}-\ c("Node1","Node2","Node3")} is simply providing column names in the order they are created.
+
+We can see that we have created a 3x3 matrix with no data.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Matrix <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{,}\DataTypeTok{ncol=}\DecValTok{3}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(Matrix) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Node1"}\NormalTok{,}\StringTok{"Node2"}\NormalTok{,}\StringTok{"Node3"}\NormalTok{)}
+\NormalTok{Matrix}
 \end{Highlighting}
 \end{Shaded}
 
-Now, we would like to add some data. We are mapping edges between nodes. For example, in the first line of code below ``3'' is the weighted edge between node 1 and 2.
+\begin{verbatim}
+##      Node1 Node2 Node3
+## [1,]     0     0     0
+## [2,]     0     0     0
+## [3,]     0     0     0
+\end{verbatim}
+
+Now, we would like to assign some data to the matrix. We are mapping edges between nodes. For example, in the first line of code below ``3'' is the weighted edge between node 1 and 2.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -471,14 +508,27 @@ Now, we would like to add some data. We are mapping edges between nodes. For exa
 
 Change the Matrix values and visualise the result using qgraph. Feel free to try negative numbers too.
 
-Click to see Code
+Click to see one possible example\ldots{}
 
-Matrix{[}1,2{]} \textless{}- 3
-Matrix{[}2,1{]} \textless{}- 3
-Matrix{[}2,3{]} \textless{}- -3
-Matrix{[}3,2{]} \textless{}- 3
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Matrix[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{] <-}\StringTok{ }\DecValTok{-3}
+\NormalTok{Matrix[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
 
-qgraph(Matrix)
+\KeywordTok{qgraph}\NormalTok{(Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{03-s01-lab02a_files/figure-latex/unnamed-chunk-2-1} 
+
+}
+
+\caption{One Example - Change Numbers to see what happens}\label{fig:unnamed-chunk-2}
+\end{figure}
 
 \hypertarget{practical}{%
 \chapter{Practical}\label{practical}}
@@ -515,15 +565,6 @@ Remember, this needs to be saved within the working directory that you set so th
 \KeywordTok{library}\NormalTok{(bootnet)}
 \KeywordTok{library}\NormalTok{(qgraph)}
 \KeywordTok{library}\NormalTok{(summarytools)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in fun(libname, pkgname): couldn't connect to display ":0"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"networkdataset.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}

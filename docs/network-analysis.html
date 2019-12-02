@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-11-06" />
+<meta name="date" content="2019-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.1.4</b> Tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#scripts"><i class="fa fa-check"></i><b>2.2</b> Scripts</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.1</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.1</b> Opening SPSS Files</a></li>
+<li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.2</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -223,7 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="why-use-network-analysis-in-mental-health" class="section level2">
 <h2><span class="header-section-number">3.3</span> Why Use Network Analysis in Mental Health?</h2>
-<p>“Analysis of mental health data is usually based on sum-scores of symptoms or the estimation of factor models. Both types of analyses disregard direct associations among symptoms that are well-understood in clinical practice: mental disorders can be conceptualized as vicious circles of problems that are hard to escape. A novel research framework, the network perspective on psychopathology, understands mental disorders as complex networks of interacting symptoms” (Fried, 2018)</p>
+<p>“Analysis of mental health data is usually based on sum-scores of symptoms or the estimation of factor models. Both types of analyses disregard direct associations among symptoms that are well-understood in clinical practice: mental health problems can be conceptualized as vicious circles of problems that are hard to escape. A novel research framework, the network perspective on psychopathology, understands mental disorders as complex networks of interacting symptoms” (Fried, 2018)</p>
+<p>However, mental health networks can contain more than just symptoms. <a href="https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2671414?casa_token=nGUSw-yIg1YAAAAA%3aXJz4Ehq44lBBE3iDqQhuNSGgJfafMX9lGyiDx9YxHJpVSFVOJo0gkA0NdrEGhY9T-6mvlB17">In a study looking at patients with schizophrenia</a> the researchers wanted to understand the extent to which variables belonging to the same construct were connected and how different constructs mutually interacted and reinforced one another. In addition to modelling symptoms, the researchers also looked at engagement with mental health services and interpersonal relationships. This is important when we want to explore what wider influences might impact upon behaviour we are interested in.</p>
 </div>
 <div id="what-is-a-network" class="section level2">
 <h2><span class="header-section-number">3.4</span> What is a network?</h2>
@@ -232,24 +234,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Several packages are used in the network analysis, including <code>network</code>, <code>statnet</code>, <code>igraph</code> and <code>qgraph</code>.</p>
 <p>qgraph was developed in the context of psychometrics approach by Dr. Sacha Epskamp and colleagues in 2012. We will be be working with <code>qgraph</code> and <code>bootnet</code>. Please <code>install.packages(&quot;qgraph&quot;)</code> (which we will use now) and `install.packages(“bootnet”) (which we will use later) so we can get started.</p>
 <p>Now, let us load up <code>qgraph</code> - remember and save all of your code into a script.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(qgraph)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(qgraph)</a></code></pre></div>
 </div>
 <div id="drawing-matrices" class="section level2">
 <h2><span class="header-section-number">3.5</span> Drawing Matrices</h2>
 <p>First, we will create a blank matrix with the following code. Here, we are asking R to create a matrix with 3 rows and 3 columns.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">Matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dt">nrow=</span><span class="dv">3</span>,<span class="dt">ncol=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">colnames</span>(Matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Node1&quot;</span>,<span class="st">&quot;Node2&quot;</span>,<span class="st">&quot;Node3&quot;</span>)</a></code></pre></div>
-<p>Now, we would like to add some data. We are mapping edges between nodes. For example, in the first line of code below “3” is the weighted edge between node 1 and 2.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">Matrix[<span class="dv">1</span>,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">Matrix[<span class="dv">2</span>,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">Matrix[<span class="dv">2</span>,<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">Matrix[<span class="dv">3</span>,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">Matrix</a></code></pre></div>
+<p>The code <code>colnames(Matrix) &lt;- c(&quot;Node1&quot;,&quot;Node2&quot;,&quot;Node3&quot;)</code> is simply providing column names in the order they are created.</p>
+<p>We can see that we have created a 3x3 matrix with no data.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">Matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dt">nrow=</span><span class="dv">3</span>,<span class="dt">ncol=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">colnames</span>(Matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Node1&quot;</span>,<span class="st">&quot;Node2&quot;</span>,<span class="st">&quot;Node3&quot;</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">Matrix</a></code></pre></div>
+<pre><code>##      Node1 Node2 Node3
+## [1,]     0     0     0
+## [2,]     0     0     0
+## [3,]     0     0     0</code></pre>
+<p>Now, we would like to assign some data to the matrix. We are mapping edges between nodes. For example, in the first line of code below “3” is the weighted edge between node 1 and 2.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">Matrix[<span class="dv">1</span>,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">Matrix[<span class="dv">2</span>,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">Matrix[<span class="dv">2</span>,<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">Matrix[<span class="dv">3</span>,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">Matrix</a></code></pre></div>
 <pre><code>##      Node1 Node2 Node3
 ## [1,]     0     3     0
 ## [2,]     3     0     3
 ## [3,]     0     3     0</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">qgraph</span>(Matrix)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">qgraph</span>(Matrix)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:qgraph"></span>
 <img src="03-s01-lab02a_files/figure-html/qgraph-1.png" alt="Matrix Visualisation" width="100%" />
 <p class="caption">
@@ -260,15 +269,19 @@ Figure 3.1: Matrix Visualisation
 <div id="task" class="section level2">
 <h2><span class="header-section-number">3.6</span> Task</h2>
 <p>Change the Matrix values and visualise the result using qgraph. Feel free to try negative numbers too.</p>
-<div class="solution">
-<button>
-Click to see Code
-</button>
-<p>Matrix[1,2] &lt;- 3
-Matrix[2,1] &lt;- 3
-Matrix[2,3] &lt;- -3
-Matrix[3,2] &lt;- 3</p>
-<p>qgraph(Matrix)</p>
+<details>
+<p><summary>Click to see one possible example…</summary></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">Matrix[<span class="dv">1</span>,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">Matrix[<span class="dv">2</span>,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">Matrix[<span class="dv">2</span>,<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">-3</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">Matrix[<span class="dv">3</span>,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="kw">qgraph</span>(Matrix)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="03-s01-lab02a_files/figure-html/unnamed-chunk-2-1.png" alt="One Example - Change Numbers to see what happens" width="100%" />
+<p class="caption">
+Figure 3.2: One Example - Change Numbers to see what happens
+</p>
 </div>
 
 </div>

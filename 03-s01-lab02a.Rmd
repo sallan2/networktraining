@@ -16,7 +16,9 @@ The image above from van der Maas (2006) demonstrates the difference between a l
 
 ## Why Use Network Analysis in Mental Health?
 
-"Analysis of mental health data is usually based on sum-scores of symptoms or the estimation of factor models. Both types of analyses disregard direct associations among symptoms that are well-understood in clinical practice: mental disorders can be conceptualized as vicious circles of problems that are hard to escape. A novel research framework, the network perspective on psychopathology, understands mental disorders as complex networks of interacting symptoms" (Fried, 2018)
+"Analysis of mental health data is usually based on sum-scores of symptoms or the estimation of factor models. Both types of analyses disregard direct associations among symptoms that are well-understood in clinical practice: mental health problems can be conceptualized as vicious circles of problems that are hard to escape. A novel research framework, the network perspective on psychopathology, understands mental disorders as complex networks of interacting symptoms" (Fried, 2018)
+
+However, mental health networks can contain more than just symptoms. [In a study looking at patients with schizophrenia](https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2671414?casa_token=nGUSw-yIg1YAAAAA%3aXJz4Ehq44lBBE3iDqQhuNSGgJfafMX9lGyiDx9YxHJpVSFVOJo0gkA0NdrEGhY9T-6mvlB17) the researchers wanted to understand the extent to which variables belonging to the same construct were connected and how different constructs mutually interacted and reinforced one another. In addition to modelling symptoms, the researchers also looked at engagement with mental health services and interpersonal relationships. This is important when we want to explore what wider influences might impact upon behaviour we are interested in.
 
 ## What is a network?
 
@@ -38,12 +40,16 @@ library(qgraph)
 
 First, we will create a blank matrix with the following code. Here, we are asking R to create a matrix with 3 rows and 3 columns.
 
+The code `colnames(Matrix) <- c("Node1","Node2","Node3")` is simply providing column names in the order they are created.
+
+We can see that we have created a 3x3 matrix with no data.
 ```{r draw_empty} 
 Matrix <- matrix(0,nrow=3,ncol=3)
 colnames(Matrix) <- c("Node1","Node2","Node3")
+Matrix
 ```
 
-Now, we would like to add some data. We are mapping edges between nodes. For example, in the first line of code below "3" is the weighted edge between node 1 and 2. 
+Now, we would like to assign some data to the matrix. We are mapping edges between nodes. For example, in the first line of code below "3" is the weighted edge between node 1 and 2. 
 
 ```{r full} 
 Matrix[1,2] <- 3
@@ -60,14 +66,15 @@ qgraph(Matrix)
 
 Change the Matrix values and visualise the result using qgraph. Feel free to try negative numbers too. 
 
-`r hide("Click to see Code")`
-```{block}
+<details>
+<summary>Click to see one possible example...</summary>
+```{r, message=FALSE, fig.cap="One Example - Change Numbers to see what happens"}
 Matrix[1,2] <- 3
 Matrix[2,1] <- 3
 Matrix[2,3] <- -3
 Matrix[3,2] <- 3
 
 qgraph(Matrix)
-
 ```
-`r unhide()`
+
+

@@ -93,6 +93,25 @@ Once the package has been installed, any time you want to use the package you us
 
 So far we have been typing into the console but that means all work is lost when re-start R. We can save data in scripts. To create a new script select the option from the File menu.
 
+### Opening SPSS Files
+
+The `foreign` package allows easy opening of .sav files which are associated with SPSS.
+
+You can either set a path to open up an SPSS file or run `file.choose()` and pick the file manually.
+
+To use foreign, we need to first install the package, same as we did with tidyverse. Follow the instructions for installing tidyverse and subsitute the package name. 
+
+<details>
+<summary>Click to see solution...</summary>
+```{rforeign}
+install.packages("foreign")
+```
+
+Once you have installed packages, .sav files can be opened using the following code:
+
+`dataset = read.spss("YOURFILENAMEHERE.sav", to.data.frame=TRUE)`
+
+While we are not using spss files during this training, it is useful to know how to do this.
 
 ### Keeping Environment Clean
 
