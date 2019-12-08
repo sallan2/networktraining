@@ -12,7 +12,7 @@ The potential utility of network analysis was noted over ten years ago in intell
 
 <img src="images/mutualism.png">
 
-The image above from van der Maas (2006) demonstrates the difference between a latent factor and a network approach. 
+The image above from van der Maas (2006) demonstrates the difference between a latent factor and a network approach, similiar to what we have seen in the slides.
 
 ## Why Use Network Analysis in Mental Health?
 

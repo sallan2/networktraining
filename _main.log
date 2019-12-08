@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.5)  8 DEC 2019 18:30
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.5)  8 DEC 2019 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1032,9 +1032,6 @@ Chapter 3.
 Underfull \hbox (badness 2469) in paragraph at lines 423--423
 []\TU/lmr/bx/n/14.4 Why Use Network Analysis in Mental
  []
-
-
-Underfull \vbox (badness 1320) has occurred while \output is active []
 
 [13
 
