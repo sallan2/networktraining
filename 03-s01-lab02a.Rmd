@@ -62,7 +62,7 @@ Matrix
 ```{r qgraph, fig.cap="Matrix Visualisation"} 
 qgraph(Matrix)
 ```
-## Task
+## Understanding Network plots
 
 Change the Matrix values and visualise the result using qgraph. Feel free to try negative numbers too. 
 
@@ -77,4 +77,19 @@ Matrix[3,2] <- 3
 qgraph(Matrix)
 ```
 
+## Task
+
+Please run the following code and look at *both* the visualisation of the nodes and the strength plot, what do you think this tells us about node 2?
+
+
+```{r centrality, fig.cap="Centrality Plot"}
+Matrix[1,2] <- 3
+Matrix[2,1] <- 3
+Matrix[2,3] <- 3
+Matrix[3,2] <- 3
+
+data_frame <- qgraph(Matrix)
+
+centralityPlot(data_frame)
+```
 

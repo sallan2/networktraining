@@ -170,8 +170,17 @@ centralityPlot(Network, include = c("Strength","ExpectedInfluence"),
                orderBy = "ExpectedInfluence")
 ```
 
-## Issues
+## Assumptions
 
-This assumes normally disturbuted data which can be rare in psychology where Likert scales (such as that used to measure data here) are common. 
+Network Analysis assumes normally disturbuted data which can be rare in psychology where Likert scales (such as that used to measure data here) are common. 
 
 "our data did not meet all assumptions of multivariate normality. This is not unusual in psychology, but as it is unclear at present how robust the employed methods are to such violations, results need to be interpreted with caution." [(Aalbers, 2019)](https://openaccess.leidenuniv.nl/bitstream/handle/1887/73951/Aalbers_et_al_2018_T.pdf?sequence=1)
+
+
+## Stability
+
+When are estimating networks, we are estimating a structure. While we end up with a model, there is uncertainty about model parameters. Researchers in Amsterdam have developed a bootstrapping procedure so we can estimate stability with more confidence. For more information on this, please see [a tutorial](https://psych-networks.com/r-tutorial-power-issues-robustness-network-models/) by Eiko Fried.
+
+
+
+

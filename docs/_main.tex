@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-12-07}
+    \date{2019-12-08}
 
 \usepackage{booktabs}
 
@@ -503,8 +503,8 @@ Now, we would like to assign some data to the matrix. We are mapping edges betwe
 \caption{Matrix Visualisation}\label{fig:qgraph}
 \end{figure}
 
-\hypertarget{task}{%
-\section{Task}\label{task}}
+\hypertarget{understanding-network-plots}{%
+\section{Understanding Network plots}\label{understanding-network-plots}}
 
 Change the Matrix values and visualise the result using qgraph. Feel free to try negative numbers too.
 
@@ -528,6 +528,50 @@ Click to see one possible example\ldots{}
 }
 
 \caption{One Example - Change Numbers to see what happens}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+\hypertarget{task}{%
+\section{Task}\label{task}}
+
+Please run the following code and look at \emph{both} the visualisation of the nodes and the strength plot, what do you think this tells us about node 2?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Matrix[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+\NormalTok{Matrix[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\DecValTok{3}
+
+\NormalTok{data_frame <-}\StringTok{ }\KeywordTok{qgraph}\NormalTok{(Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{03-s01-lab02a_files/figure-latex/centrality-1} 
+
+}
+
+\caption{Centrality Plot}\label{fig:centrality1}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{centralityPlot}\NormalTok{(data_frame)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Note: z-scores are shown on x-axis rather than raw centrality indices.
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{03-s01-lab02a_files/figure-latex/centrality-2} 
+
+}
+
+\caption{Centrality Plot}\label{fig:centrality2}
 \end{figure}
 
 \hypertarget{practical}{%
@@ -772,12 +816,17 @@ From looking at both strength and expected influence, it appears PAQ12 and PAQ8 
 \caption{Centrality Plot}\label{fig:Pcentrality}
 \end{figure}
 
-\hypertarget{issues}{%
-\section{Issues}\label{issues}}
+\hypertarget{assumptions}{%
+\section{Assumptions}\label{assumptions}}
 
-This assumes normally disturbuted data which can be rare in psychology where Likert scales (such as that used to measure data here) are common.
+Network Analysis assumes normally disturbuted data which can be rare in psychology where Likert scales (such as that used to measure data here) are common.
 
 ``our data did not meet all assumptions of multivariate normality. This is not unusual in psychology, but as it is unclear at present how robust the employed methods are to such violations, results need to be interpreted with caution.'' \href{https://openaccess.leidenuniv.nl/bitstream/handle/1887/73951/Aalbers_et_al_2018_T.pdf?sequence=1}{(Aalbers, 2019)}
+
+\hypertarget{stability}{%
+\section{Stability}\label{stability}}
+
+When are estimating networks, we are estimating a structure. While we end up with a model, there is uncertainty about model parameters. Researchers in Amsterdam have developed a bootstrapping procedure so we can estimate stability with more confidence. For more information on this, please see \href{https://psych-networks.com/r-tutorial-power-issues-robustness-network-models/}{a tutorial} by Eiko Fried.
 
 \hypertarget{appendix-appendices}{%
 \appendix}
