@@ -577,6 +577,9 @@ Please run the following code and look at \emph{both} the visualisation of the n
 \hypertarget{practical}{%
 \chapter{Practical}\label{practical}}
 
+\hypertarget{overview-4}{%
+\section{Overview}\label{overview-4}}
+
 \textbf{In this session you will learn:}
 
 \begin{enumerate}
@@ -601,14 +604,24 @@ We will work with a local dataset gathered from high school age children. Please
 
 First, we need to make sure we have \texttt{tidyverse} loaded and then open the file. We are creating a data frame called which we will assign to our .csv file.
 
-Remember, this needs to be saved within the working directory that you set so that R knows where to find it.
+Remember, this needs to be saved within the working directory that you set so that R knows where to find it. \href{https://sallan2.github.io/networktraining/working-with-data-in-r.html}{We covered this before}
+
+We will be estimating networks in this session so we need to install \texttt{bootnet} - please install in the same way as we have for other packages.
+
+I need a Hint\ldots{}
+
+\begin{verbatim}
+
+install.packages("bootnet")
+\end{verbatim}
+
+Once we have installed bootnet, we can load the packages we need and open up the file.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidyverse)}
-\KeywordTok{library}\NormalTok{(bootnet)}
 \KeywordTok{library}\NormalTok{(qgraph)}
-\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{library}\NormalTok{(bootnet)}
 \NormalTok{data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"networkdataset.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
