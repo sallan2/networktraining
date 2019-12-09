@@ -158,7 +158,25 @@ plot(Network, layout="spring", labels=colnames(PAQ))
 
 ## Interpretation
 
-The network shows the strength of relationships between the TPB variables. Some variables have quite strong connections (e.g. PAQ12 and PAQ11), whereas others have weak relationship (e.g. PAQ 7 and PAQ3). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network.
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Parental Authority Questionnaire (PAQ)</span>
+
+
+1.	My family Knows what I do in my free time
+2.	My family knows friends I have during my free time
+3.	My family knows  how I spend my money
+4.	My family knows  the time of my exams
+5.	My family knows what I do at school
+6.	During the past month, my family has no idea if I was at home in the evenings
+7.	Usually I tell my family about school
+8.	Usually I tell my family about exams
+9.	Usually I tell my family about my relationships with teachers
+10.	Usually I conceal from family a lot of things which I do in the evening
+11. When I am out, I tell my family what I did after coming home
+12. When I am out, I do not tell my family what I did after coming home
+
+
+The network shows the strength of *relationships* between the variables. Some variables have quite strong connections (e.g. PAQ12 and PAQ11), whereas others have weak relationship (e.g. PAQ7 and PAQ3). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network. Borsboom (Borsboom, 2016) recommends exploratory network analysists start by creating manageable networks because too many nodes can lead to a dense network which is difficult to make sense from.
+
 
 A key concept in network analysis is the centrality of the symptom: if a behaviour or symptom (e.g. fatigue) has many and/or strong associations to other nodes, they are more central within the network than a less connected symptom.There are different centrality metrics, and *strength* most often used. Expected influence is related to strength but argued to be a [better metric](https://psych-networks.com/expected-influence-new-centrality-metric-robinaugh-et-al-2016/) - adapted from open source materials by [Derek DeBuers](https://derekdebeurs.github.io/esssb17/)
 
