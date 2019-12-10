@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-12-09}
+    \date{2019-12-10}
 
 \usepackage{booktabs}
 
@@ -348,6 +348,11 @@ I need a hint!
 
 now, try running the above code and see what happens.
 
+\hypertarget{scripts}{%
+\section{Scripts}\label{scripts}}
+
+So far we have been typing into the console but that means all work is lost when re-start R. We can save our analysis code in scripts. To create a new script select the option from the File menu.
+
 \hypertarget{tidyverse}{%
 \subsection{Tidyverse}\label{tidyverse}}
 
@@ -362,11 +367,6 @@ install.packages("tidyverse")
 \end{verbatim}
 
 Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than \texttt{tidyverse}, simply substitute the package name.
-
-\hypertarget{scripts}{%
-\section{Scripts}\label{scripts}}
-
-So far we have been typing into the console but that means all work is lost when re-start R. We can save our analysis code in scripts. To create a new script select the option from the File menu.
 
 \hypertarget{opening-spss-files}{%
 \subsection{Opening SPSS Files}\label{opening-spss-files}}
@@ -383,16 +383,79 @@ Click to see solution\ldots{}
 install.packages("foreign")
 \end{verbatim}
 
-Once you have installed packages, .sav files can be opened using the following code:
+Once you have installed packages, .sav files can be opened using (editing in your actual file name) with the following code:
 
 \texttt{dataset\ =\ read.spss("YOURFILENAMEHERE.sav",\ to.data.frame=TRUE)}
 
 While we are not using spss files during this training, it is useful to know how to do this.
 
+\hypertarget{iris-task}{%
+\section{iris Task}\label{iris-task}}
+
+R comes with a few built in data sets. One of which is called \texttt{iris} which is about the plant . Now that we have installed \texttt{tidyverse} let us see what it can do.
+
+Create a new script and call the script iris. We are going to look at the top ten values of the in built data set. Once you are done, feel free to try looking at the top 3,7 and 31 values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(iris, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+\end{verbatim}
+
+What do you think \texttt{tail(iris,\ 10)} will do?
+
+\hypertarget{calculate-a-mean}{%
+\section{Calculate a Mean}\label{calculate-a-mean}}
+
+From looking at the dataset, we can see it has information on the sepal and petal lengths and widths for different species of iris. We are interested in calculating \textbf{mean} petal width and we will use the \texttt{summarise} function to do it.
+
+\texttt{summarise} is a useful function which works for means, medians and interquartile ranges and gives results in a single row.
+
+You can run \texttt{?summarise} to bring up the help function for more information.
+
+Now, try running the following codes within your iris script.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iris }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_petal_length =} \KeywordTok{mean}\NormalTok{(Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean_iris <-}\StringTok{ }\NormalTok{iris }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_petal_length =} \KeywordTok{mean}\NormalTok{(Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  From the following options, what is the difference in the code? one is assigned to a variable one actually calculates the median both are the same
+\end{itemize}
+
+Explain This Answer!
+
+\texttt{mean\_iris\ \textless{}-\ iris\ \%\textgreater{}\%\ summarise(mean\_petal\_length\ =\ mean(Petal.Length))} calculates the mean and creates a new dataframe (which can be seen in the environment) while \texttt{iris\ \%\textgreater{}\%\ summarise(mean\_petal\_length\ =\ mean(Petal.Length))} simply calculates the mean.,
+
 \hypertarget{keeping-environment-clean}{%
 \subsection{Keeping Environment Clean}\label{keeping-environment-clean}}
 
-As you work, you will notice your environment will fill up with lots of variables that you have assigned.
+As you work, you will notice your environment will (quickly) fill up with lots of variables that you have assigned.
 
 Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as \texttt{tidyverse}.
 
@@ -648,7 +711,7 @@ Now, if we run \texttt{str(data\_factors)} we can see that this dataframe is rec
 \hypertarget{visualising-data}{%
 \section{Visualising Data}\label{visualising-data}}
 
-To do - write a bit about plotting options in R.
+R can make all sorts of graphs. We have already seen some and we can now make some ourselves.
 
 \hypertarget{visualising-data---practical}{%
 \section{Visualising Data - Practical}\label{visualising-data---practical}}

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-12-09" />
+<meta name="date" content="2019-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -149,11 +149,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#setting-working-directory"><i class="fa fa-check"></i><b>2.1.1</b> Setting Working Directory</a></li>
 <li class="chapter" data-level="2.1.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#code"><i class="fa fa-check"></i><b>2.1.2</b> Code</a></li>
 <li class="chapter" data-level="2.1.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#functions-arguments"><i class="fa fa-check"></i><b>2.1.3</b> Functions &amp; Arguments</a></li>
-<li class="chapter" data-level="2.1.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.1.4</b> Tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#scripts"><i class="fa fa-check"></i><b>2.2</b> Scripts</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.1</b> Opening SPSS Files</a></li>
-<li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.2.2</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#tidyverse"><i class="fa fa-check"></i><b>2.2.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.2</b> Opening SPSS Files</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#iris-task"><i class="fa fa-check"></i><b>2.3</b> iris Task</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-mean"><i class="fa fa-check"></i><b>2.4</b> Calculate a Mean</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.4.1</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -261,8 +264,13 @@ I need a hint!
 <p>now, try running the above code and see what happens.</p>
 </div>
 </div>
+</div>
+<div id="scripts" class="section level2">
+<h2><span class="header-section-number">2.2</span> Scripts</h2>
+<p>So far we have been typing into the console but that means all work is lost when re-start R. We can save our analysis code in scripts. To create a new script select the option from the File menu.</p>
+<p><img src="images/script.gif"></p>
 <div id="tidyverse" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> Tidyverse</h3>
+<h3><span class="header-section-number">2.2.1</span> Tidyverse</h3>
 <p>However, we do not always want to use R to create random numbers, we want to use it to analyse our own data which commonly resides in .csv or .sav files. People have developed many different libraries to help us work with such data. One of the most popular packages is tidyverse.</p>
 <p>The Tidyverse is a collection of R packages with a common design , grammar, and data structure that makes analysis faster and easier.</p>
 <p>The first time you want to use a package, you must first install the package. <code>tidyverse</code> can be installed as follows.</p>
@@ -270,29 +278,62 @@ I need a hint!
 <pre class="rinstall"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 <p>Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than <code>tidyverse</code>, simply substitute the package name.</p>
 </div>
-</div>
-<div id="scripts" class="section level2">
-<h2><span class="header-section-number">2.2</span> Scripts</h2>
-<p>So far we have been typing into the console but that means all work is lost when re-start R. We can save our analysis code in scripts. To create a new script select the option from the File menu.</p>
-<p><img src="images/script.gif"></p>
 <div id="opening-spss-files" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Opening SPSS Files</h3>
+<h3><span class="header-section-number">2.2.2</span> Opening SPSS Files</h3>
 <p>The <code>foreign</code> package allows easy opening of .sav files which are associated with SPSS.</p>
 <p>You can either set a path to open up an SPSS file or run <code>file.choose()</code> and pick the file manually.</p>
 <p>To use foreign, we need to first install the package, same as we did with tidyverse. Follow the instructions for installing tidyverse and subsitute the package name.</p>
 <details>
 <p><summary>Click to see solution…</summary></p>
 <pre class="rforeign"><code>install.packages(&quot;foreign&quot;)</code></pre>
-<p>Once you have installed packages, .sav files can be opened using the following code:</p>
+<p>Once you have installed packages, .sav files can be opened using (editing in your actual file name) with the following code:</p>
 <p><code>dataset = read.spss(&quot;YOURFILENAMEHERE.sav&quot;, to.data.frame=TRUE)</code></p>
 <p>While we are not using spss files during this training, it is useful to know how to do this.</p>
 </div>
+</div>
+<div id="iris-task" class="section level2">
+<h2><span class="header-section-number">2.3</span> iris Task</h2>
+<p><img src="images/iris.jpeg"></p>
+<p>R comes with a few built in data sets. One of which is called <code>iris</code> which is about the plant . Now that we have installed <code>tidyverse</code> let us see what it can do.</p>
+<p>Create a new script and call the script iris. We are going to look at the top ten values of the in built data set. Once you are done, feel free to try looking at the top 3,7 and 31 values.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">head</span>(iris, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+<p>What do you think <code>tail(iris, 10)</code> will do?</p>
+</div>
+<div id="calculate-a-mean" class="section level2">
+<h2><span class="header-section-number">2.4</span> Calculate a Mean</h2>
+<p>From looking at the dataset, we can see it has information on the sepal and petal lengths and widths for different species of iris. We are interested in calculating <strong>mean</strong> petal width and we will use the <code>summarise</code> function to do it.</p>
+<p><code>summarise</code> is a useful function which works for means, medians and interquartile ranges and gives results in a single row.</p>
+<p>You can run <code>?summarise</code> to bring up the help function for more information.</p>
+<p>Now, try running the following codes within your iris script.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_petal_length =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">mean_iris &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_petal_length =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
+<ul>
+<li>From the following options, what is the difference in the code? <select class='solveme' data-answer='["one is assigned to a variable"]'> <option></option> <option>one is assigned to a variable</option> <option>one actually calculates the median</option> <option>both are the same</option></select></li>
+</ul>
+<div class="solution">
+<button>
+Explain This Answer!
+</button>
+<p><code>mean_iris &lt;- iris %&gt;% summarise(mean_petal_length = mean(Petal.Length))</code> calculates the mean and creates a new dataframe (which can be seen in the environment) while <code>iris %&gt;% summarise(mean_petal_length = mean(Petal.Length))</code> simply calculates the mean.,</p>
+</div>
 <div id="keeping-environment-clean" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Keeping Environment Clean</h3>
-<p>As you work, you will notice your environment will fill up with lots of variables that you have assigned.
-<img src="images/messy.png"></p>
+<h3><span class="header-section-number">2.4.1</span> Keeping Environment Clean</h3>
+<p>As you work, you will notice your environment will (quickly) fill up with lots of variables that you have assigned.</p>
+<p><img src="images/messy.png"></p>
 <p>Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
 
 </div>
 </div>

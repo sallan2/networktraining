@@ -74,6 +74,14 @@ now, try running the above code and see what happens.
 ```
 `r unhide()`
 
+
+## Scripts
+
+So far we have been typing into the console but that means all work is lost when re-start R. We can save our analysis code in scripts. To create a new script select the option from the File menu.
+
+<img src="images/script.gif">
+
+
 ### Tidyverse
 
 
@@ -91,14 +99,6 @@ install.packages("tidyverse")
 
 Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than `tidyverse`, simply substitute the package name. 
 
-## Scripts
-
-So far we have been typing into the console but that means all work is lost when re-start R. We can save our analysis code in scripts. To create a new script select the option from the File menu.
-
-<img src="images/script.gif">
-
-
-
 ### Opening SPSS Files
 
 The `foreign` package allows easy opening of .sav files which are associated with SPSS.
@@ -113,15 +113,64 @@ To use foreign, we need to first install the package, same as we did with tidyve
 install.packages("foreign")
 ```
 
-Once you have installed packages, .sav files can be opened using the following code:
+Once you have installed packages, .sav files can be opened using (editing in your actual file name) with the following code:
 
 `dataset = read.spss("YOURFILENAMEHERE.sav", to.data.frame=TRUE)`
 
 While we are not using spss files during this training, it is useful to know how to do this.
 
+## iris Task
+
+<img src="images/iris.jpeg">
+
+R comes with a few built in data sets. One of which is called `iris` which is about the plant . Now that we have installed `tidyverse` let us see what it can do.
+
+Create a new script and call the script iris. We are going to look at the top ten values of the in built data set. Once you are done, feel free to try looking at the top 3,7 and 31 values.
+
+```{r iris}
+library("tidyverse")
+head(iris, 10)
+
+```
+
+What do you think `tail(iris, 10)` will do?
+
+## Calculate a Mean
+
+From looking at the dataset, we can see it has information on the sepal and petal lengths and widths for different species of iris. We are interested in calculating **mean** petal width and we will use the `summarise` function to do it.
+
+`summarise` is a useful function which works for means, medians and interquartile ranges and gives results in a single row.
+
+You can run `?summarise` to bring up the help function for more information.
+
+Now, try running the following codes within your iris script.
+
+```{r means, results='hide'}
+
+iris %>% summarise(mean_petal_length = mean(Petal.Length))
+
+```
+
+
+```{r means2}
+
+mean_iris <- iris %>% summarise(mean_petal_length = mean(Petal.Length))
+
+```
+
+
+- From the following options, what is the difference in the code? `r mcq(c(answer = "one is assigned to a variable", "one actually calculates the median", "both are the same"))`  
+
+`r hide("Explain This Answer!")`
+```{block}
+`mean_iris <- iris %>% summarise(mean_petal_length = mean(Petal.Length))` calculates the mean and creates a new dataframe (which can be seen in the environment) while `iris %>% summarise(mean_petal_length = mean(Petal.Length))` simply calculates the mean.,
+```
+`r unhide()` 
+
 ### Keeping Environment Clean
 
-As you work, you will notice your environment will fill up with lots of variables that you have assigned. 
+As you work, you will notice your environment will (quickly) fill up with lots of variables that you have assigned. 
+
 <img src="images/messy.png">
 
 Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as `tidyverse`.
@@ -130,4 +179,5 @@ Before beginning any new analyses it is important to clear the environment which
 ```{r clean, results="hide"}
 rm(list = ls())
 ```
+
 
