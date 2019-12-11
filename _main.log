@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.5)  10 DEC 2019 20:29
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.5)  11 DEC 2019 08:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1063,102 +1063,103 @@ Underfull \hbox (badness 10000) in paragraph at lines 453--454
 n_petal_length =
  []
 
+[13]
 
-Package xcolor Warning: Incompatible color definition on input line 462.
-
-
-Package xcolor Warning: Incompatible color definition on input line 466.
+Package xcolor Warning: Incompatible color definition on input line 473.
 
 
-Package xcolor Warning: Incompatible color definition on input line 466.
+Package xcolor Warning: Incompatible color definition on input line 477.
 
-[13] [14
 
-]
+Package xcolor Warning: Incompatible color definition on input line 477.
+
+[14]
 Chapter 3.
 
-Underfull \hbox (badness 2469) in paragraph at lines 486--486
+Underfull \hbox (badness 2469) in paragraph at lines 506--506
 []\TU/lmr/bx/n/14.4 Why Use Network Analysis in Mental
  []
 
-[15]
+[15
 
-Package xcolor Warning: Incompatible color definition on input line 505.
+]
+
+Package xcolor Warning: Incompatible color definition on input line 525.
 
 
-Package xcolor Warning: Incompatible color definition on input line 509.
+Package xcolor Warning: Incompatible color definition on input line 529.
 
 
-Package xcolor Warning: Incompatible color definition on input line 509.
+Package xcolor Warning: Incompatible color definition on input line 529.
 
 [16]
 
-Package xcolor Warning: Incompatible color definition on input line 520.
+Package xcolor Warning: Incompatible color definition on input line 542.
 
 
-Package xcolor Warning: Incompatible color definition on input line 526.
+Package xcolor Warning: Incompatible color definition on input line 548.
 
 
-Package xcolor Warning: Incompatible color definition on input line 526.
+Package xcolor Warning: Incompatible color definition on input line 548.
 
 
-Package xcolor Warning: Incompatible color definition on input line 537.
+Package xcolor Warning: Incompatible color definition on input line 559.
 
 
-Package xcolor Warning: Incompatible color definition on input line 545.
+Package xcolor Warning: Incompatible color definition on input line 567.
 
 
-Package xcolor Warning: Incompatible color definition on input line 545.
+Package xcolor Warning: Incompatible color definition on input line 567.
 
 
-Package xcolor Warning: Incompatible color definition on input line 554.
+Package xcolor Warning: Incompatible color definition on input line 576.
 
 
-Package xcolor Warning: Incompatible color definition on input line 558.
+Package xcolor Warning: Incompatible color definition on input line 580.
 
 
-Package xcolor Warning: Incompatible color definition on input line 558.
+Package xcolor Warning: Incompatible color definition on input line 580.
 
 File: "03-s01-lab02a_files/figure-latex/""qgraph-1".pdf Graphic file (type pdf)
 
 <use "03-s01-lab02a_files/figure-latex/""qgraph-1".pdf>
 
-Package xcolor Warning: Incompatible color definition on input line 576.
+Package xcolor Warning: Incompatible color definition on input line 598.
 
 [17]
 
-Package xcolor Warning: Incompatible color definition on input line 585.
+Package xcolor Warning: Incompatible color definition on input line 607.
 
 
-Package xcolor Warning: Incompatible color definition on input line 585.
+Package xcolor Warning: Incompatible color definition on input line 607.
 
 File: "03-s01-lab02a_files/figure-latex/""unnamed-chunk-2-1".pdf Graphic file (
 type pdf)
 <use "03-s01-lab02a_files/figure-latex/""unnamed-chunk-2-1".pdf>
 
-Package xcolor Warning: Incompatible color definition on input line 601.
+Package xcolor Warning: Incompatible color definition on input line 623.
 
 
-Package xcolor Warning: Incompatible color definition on input line 610.
+Package xcolor Warning: Incompatible color definition on input line 632.
 
 
-Package xcolor Warning: Incompatible color definition on input line 610.
+Package xcolor Warning: Incompatible color definition on input line 632.
 
 File: "03-s01-lab02a_files/figure-latex/""centrality-1".pdf Graphic file (type 
 pdf)
 <use "03-s01-lab02a_files/figure-latex/""centrality-1".pdf>
 
-Package xcolor Warning: Incompatible color definition on input line 621.
+Package xcolor Warning: Incompatible color definition on input line 643.
 
 [18] [19]
 
-Package xcolor Warning: Incompatible color definition on input line 625.
+Package xcolor Warning: Incompatible color definition on input line 647.
 
 
-Package xcolor Warning: Incompatible color definition on input line 625.
+Package xcolor Warning: Incompatible color definition on input line 647.
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 629--629
+Overfull \hbox (38.25pt too wide) in paragraph at lines 651--651
 []\TU/lmtt/m/n/10 ## Note: z-scores are shown on x-axis rather than raw central
 ity indices.[] 
  []
@@ -1169,124 +1170,124 @@ pdf)
 [20]
 Chapter 4.
 
-Package xcolor Warning: Incompatible color definition on input line 683.
+Package xcolor Warning: Incompatible color definition on input line 705.
 
 [21
 
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 690.
+Package xcolor Warning: Incompatible color definition on input line 712.
 
 
-Package xcolor Warning: Incompatible color definition on input line 690.
+Package xcolor Warning: Incompatible color definition on input line 712.
 
 
-Package xcolor Warning: Incompatible color definition on input line 696.
+Package xcolor Warning: Incompatible color definition on input line 718.
 
 
-Package xcolor Warning: Incompatible color definition on input line 707.
+Package xcolor Warning: Incompatible color definition on input line 729.
 
 
-Package xcolor Warning: Incompatible color definition on input line 707.
+Package xcolor Warning: Incompatible color definition on input line 729.
 
 
-Package xcolor Warning: Incompatible color definition on input line 723.
+Package xcolor Warning: Incompatible color definition on input line 745.
 
 
-Package xcolor Warning: Incompatible color definition on input line 737.
+Package xcolor Warning: Incompatible color definition on input line 759.
 
 
-Package xcolor Warning: Incompatible color definition on input line 737.
+Package xcolor Warning: Incompatible color definition on input line 759.
 
 
-Package xcolor Warning: Incompatible color definition on input line 737.
+Package xcolor Warning: Incompatible color definition on input line 759.
 
 [22]
 
-Package xcolor Warning: Incompatible color definition on input line 737.
+Package xcolor Warning: Incompatible color definition on input line 759.
 
 
-Package xcolor Warning: Incompatible color definition on input line 737.
+Package xcolor Warning: Incompatible color definition on input line 759.
 
 File: "04-s01-lab02a_files/figure-latex/""graph-1".pdf Graphic file (type pdf)
 <use "04-s01-lab02a_files/figure-latex/""graph-1".pdf>
 [23]
 
-Package xcolor Warning: Incompatible color definition on input line 770.
+Package xcolor Warning: Incompatible color definition on input line 792.
 
 
-Package xcolor Warning: Incompatible color definition on input line 778.
+Package xcolor Warning: Incompatible color definition on input line 800.
 
 
-Package xcolor Warning: Incompatible color definition on input line 778.
+Package xcolor Warning: Incompatible color definition on input line 800.
 
 
-Package xcolor Warning: Incompatible color definition on input line 789.
+Package xcolor Warning: Incompatible color definition on input line 811.
 
 
-Package xcolor Warning: Incompatible color definition on input line 796.
+Package xcolor Warning: Incompatible color definition on input line 818.
 
 
-Package xcolor Warning: Incompatible color definition on input line 796.
+Package xcolor Warning: Incompatible color definition on input line 818.
 
 File: "04-s01-lab02a_files/figure-latex/""graph2-1".pdf Graphic file (type pdf)
 
 <use "04-s01-lab02a_files/figure-latex/""graph2-1".pdf>
 
-Package xcolor Warning: Incompatible color definition on input line 818.
+Package xcolor Warning: Incompatible color definition on input line 840.
 
 [24]
 
-Package xcolor Warning: Incompatible color definition on input line 823.
+Package xcolor Warning: Incompatible color definition on input line 845.
 
 
-Package xcolor Warning: Incompatible color definition on input line 823.
+Package xcolor Warning: Incompatible color definition on input line 845.
 
 
-Package xcolor Warning: Incompatible color definition on input line 834.
+Package xcolor Warning: Incompatible color definition on input line 856.
 
 
-Package xcolor Warning: Incompatible color definition on input line 839.
+Package xcolor Warning: Incompatible color definition on input line 861.
 
 
-Package xcolor Warning: Incompatible color definition on input line 839.
+Package xcolor Warning: Incompatible color definition on input line 861.
 
 [25]
 Missing character: There is no λ in font [lmroman10-regular]:mapping=tex-text;!
 
-Package xcolor Warning: Incompatible color definition on input line 847.
+Package xcolor Warning: Incompatible color definition on input line 869.
 
 
-Package xcolor Warning: Incompatible color definition on input line 851.
+Package xcolor Warning: Incompatible color definition on input line 873.
 
 
-Package xcolor Warning: Incompatible color definition on input line 851.
+Package xcolor Warning: Incompatible color definition on input line 873.
 
 
-Package xcolor Warning: Incompatible color definition on input line 855.
+Package xcolor Warning: Incompatible color definition on input line 877.
 
 
-Package xcolor Warning: Incompatible color definition on input line 859.
+Package xcolor Warning: Incompatible color definition on input line 881.
 
 
-Package xcolor Warning: Incompatible color definition on input line 859.
+Package xcolor Warning: Incompatible color definition on input line 881.
 
 File: "04-s01-lab02a_files/figure-latex/""Plotting-1".pdf Graphic file (type pd
 f)
 <use "04-s01-lab02a_files/figure-latex/""Plotting-1".pdf>
 [26]
 
-Package xcolor Warning: Incompatible color definition on input line 910.
+Package xcolor Warning: Incompatible color definition on input line 932.
 
 
 Underfull \vbox (badness 1077) has occurred while \output is active []
 
 [27]
 
-Package xcolor Warning: Incompatible color definition on input line 915.
+Package xcolor Warning: Incompatible color definition on input line 937.
 
 
-Package xcolor Warning: Incompatible color definition on input line 915.
+Package xcolor Warning: Incompatible color definition on input line 937.
 
 File: "04-s01-lab02a_files/figure-latex/""Pcentrality-1".pdf Graphic file (type
  pdf)
@@ -1298,23 +1299,23 @@ Appendix A.
 ] [30]
 Appendix B.
 No file _main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1008.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1032.
 [31
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1008.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1032.
 (./_main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1008.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1008.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1032.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1032.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 7FFF636BF46161621862BF780C75F6E5.
+(rerunfilecheck)             Checksum: 95695E8A312CCBB64932DB210DB636CF.
  ) 
 Here is how much of TeX's memory you used:
- 25485 strings out of 494468
- 471658 string characters out of 6170403
- 583437 words of memory out of 5000000
- 29517 multiletter control sequences out of 15000+600000
+ 25486 strings out of 494468
+ 471678 string characters out of 6170403
+ 583565 words of memory out of 5000000
+ 29518 multiletter control sequences out of 15000+600000
  545187 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  52i,6n,47p,802b,429s stack positions out of 5000i,500n,10000p,200000b,80000s

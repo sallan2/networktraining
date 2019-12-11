@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-12-10" />
+<meta name="date" content="2019-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.2</b> Opening SPSS Files</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#iris-task"><i class="fa fa-check"></i><b>2.3</b> iris Task</a></li>
-<li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-mean"><i class="fa fa-check"></i><b>2.4</b> Calculate a Mean</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.4.1</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-mean"><i class="fa fa-check"></i><b>2.4</b> Calculate a Mean</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-median"><i class="fa fa-check"></i><b>2.5</b> Calculate a Median</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.5.1</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -328,8 +329,19 @@ Explain This Answer!
 </button>
 <p><code>mean_iris &lt;- iris %&gt;% summarise(mean_petal_length = mean(Petal.Length))</code> calculates the mean and creates a new dataframe (which can be seen in the environment) while <code>iris %&gt;% summarise(mean_petal_length = mean(Petal.Length))</code> simply calculates the mean.,</p>
 </div>
+</div>
+<div id="calculate-a-median" class="section level2">
+<h2><span class="header-section-number">2.5</span> Calculate a Median</h2>
+<p>A lot of data in psychology can be skewed, so sometimes the median is better (as numbers are equally likely to fall above or below it). How would you adapt the code for calculating the mean to calculate a median?</p>
+<p>Calculate median petal width and save to your script.</p>
+<div class="solution">
+<button>
+I need a hint!
+</button>
+<p><code>mean(Petal.Width)</code> is the function within the code block that calculates the mean, try changing to median(Petal.Width). mean_petal_width is a column name we made up so it might be a good idea to rename it something meaningful.</p>
+</div>
 <div id="keeping-environment-clean" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Keeping Environment Clean</h3>
+<h3><span class="header-section-number">2.5.1</span> Keeping Environment Clean</h3>
 <p>As you work, you will notice your environment will (quickly) fill up with lots of variables that you have assigned.</p>
 <p><img src="images/messy.png"></p>
 <p>Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as <code>tidyverse</code>.</p>

@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-12-10}
+    \date{2019-12-11}
 
 \usepackage{booktabs}
 
@@ -452,6 +452,17 @@ Explain This Answer!
 
 \texttt{mean\_iris\ \textless{}-\ iris\ \%\textgreater{}\%\ summarise(mean\_petal\_length\ =\ mean(Petal.Length))} calculates the mean and creates a new dataframe (which can be seen in the environment) while \texttt{iris\ \%\textgreater{}\%\ summarise(mean\_petal\_length\ =\ mean(Petal.Length))} simply calculates the mean.,
 
+\hypertarget{calculate-a-median}{%
+\section{Calculate a Median}\label{calculate-a-median}}
+
+A lot of data in psychology can be skewed, so sometimes the median is better (as numbers are equally likely to fall above or below it). How would you adapt the code for calculating the mean to calculate a median?
+
+Calculate median petal width and save to your script.
+
+I need a hint!
+
+\texttt{mean(Petal.Width)} is the function within the code block that calculates the mean, try changing to median(Petal.Width). mean\_petal\_width is a column name we made up so it might be a good idea to rename it something meaningful.
+
 \hypertarget{keeping-environment-clean}{%
 \subsection{Keeping Environment Clean}\label{keeping-environment-clean}}
 
@@ -471,7 +482,16 @@ Before beginning any new analyses it is important to clear the environment which
 \hypertarget{overview-3}{%
 \section{Overview}\label{overview-3}}
 
-This session will cover the basics of network analysis approach. Check the references section for more advanced topics.
+\textbf{In this session you will learn:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Basics of Network Approach
+\end{enumerate}
+
+Check the references section for more advanced topics!
 
 \hypertarget{background}{%
 \section{Background}\label{background}}
@@ -498,7 +518,7 @@ A node (in psychological research) can represent a single item from a scale, a s
 
 Several packages are used in the network analysis, including \texttt{network}, \texttt{statnet}, \texttt{igraph} and \texttt{qgraph}.
 
-qgraph was developed in the context of psychometrics approach by Dr.~Sacha Epskamp and colleagues in 2012. We will be be working with \texttt{qgraph} and \texttt{bootnet}. Please \texttt{install.packages("qgraph")} (which we will use now) and `install.packages(``bootnet'') (which we will use later) so we can get started.
+qgraph was developed in the context of psychometrics approach by Dr.~Sacha Epskamp and colleagues in 2012. We will be be working with \texttt{qgraph} and \texttt{bootnet}. Please \texttt{install.packages("qgraph")} (which we will use now) and \texttt{install.packages("bootnet")} (which we will use later) so we can get started.
 
 Now, let us load up \texttt{qgraph} - remember and save all of your code into a script.
 
@@ -510,6 +530,8 @@ Now, let us load up \texttt{qgraph} - remember and save all of your code into a 
 
 \hypertarget{drawing-matrices}{%
 \section{Drawing Matrices}\label{drawing-matrices}}
+
+Tasks on section 3 are based on that of \href{http://www.derekdebeurs.com/about}{Derek De Beurs} who uses network analysis to understand suicide ideation. Check out his work.
 
 First, we will create a blank matrix with the following code. Here, we are asking R to create a matrix with 3 rows and 3 columns.
 
@@ -1001,6 +1023,8 @@ You can now interact with this file as described in the rest of the learning mat
 \href{https://psyteachr.github.io/}{We are grateful to PsyTeachR from the University of Glasgow} for allowing us to build upon their open source teaching materials.
 
 \href{https://www.tandfonline.com/doi/full/10.1080/21642850.2018.1521283}{Network Analysis Tutorial}
+
+Tasks on section 3 are based on that of \href{http://www.derekdebeurs.com/about}{Derek De Beurs} who uses network analysis to understand suicide ideation. Check out his work.
 
 \bibliography{book.bib,packages.bib}
 

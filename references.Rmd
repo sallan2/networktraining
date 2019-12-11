@@ -5,3 +5,5 @@
 [We are grateful to PsyTeachR from the University of Glasgow](https://psyteachr.github.io/) for allowing us to build upon their open source teaching materials.
 
 [Network Analysis Tutorial](https://www.tandfonline.com/doi/full/10.1080/21642850.2018.1521283)
+
+Tasks on section 3 are based on that of [Derek De Beurs](http://www.derekdebeurs.com/about) who uses network analysis to understand suicide ideation. Check out his work.

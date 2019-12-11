@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-12-10" />
+<meta name="date" content="2019-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#opening-spss-files"><i class="fa fa-check"></i><b>2.2.2</b> Opening SPSS Files</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#iris-task"><i class="fa fa-check"></i><b>2.3</b> iris Task</a></li>
-<li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-mean"><i class="fa fa-check"></i><b>2.4</b> Calculate a Mean</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.4.1</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-mean"><i class="fa fa-check"></i><b>2.4</b> Calculate a Mean</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-median"><i class="fa fa-check"></i><b>2.5</b> Calculate a Median</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.5.1</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -219,7 +220,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Session 3</span> Network Analysis</h1>
 <div id="overview-3" class="section level2">
 <h2><span class="header-section-number">3.1</span> Overview</h2>
-<p>This session will cover the basics of network analysis approach. Check the references section for more advanced topics.</p>
+<p><strong>In this session you will learn:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Basics of Network Approach</li>
+</ol>
+<p>Check the references section for more advanced topics!</p>
 </div>
 <div id="background" class="section level2">
 <h2><span class="header-section-number">3.2</span> Background</h2>
@@ -238,12 +243,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A network is a set of nodes connected by a set of edges. A network (as collection of various nodes and edges) is also sometimes known as a graph.</p>
 <p>A node (in psychological research) can represent a single item from a scale, a sub-scale, or a composite scale: the choice of node depends upon the type of data that provide the most appropriate and useful understanding of the questions to be addressed. Edges can represent different types of relationships, e.g. co-morbidity of psychological symptoms.</p>
 <p>Several packages are used in the network analysis, including <code>network</code>, <code>statnet</code>, <code>igraph</code> and <code>qgraph</code>.</p>
-<p>qgraph was developed in the context of psychometrics approach by Dr. Sacha Epskamp and colleagues in 2012. We will be be working with <code>qgraph</code> and <code>bootnet</code>. Please <code>install.packages(&quot;qgraph&quot;)</code> (which we will use now) and `install.packages(“bootnet”) (which we will use later) so we can get started.</p>
+<p>qgraph was developed in the context of psychometrics approach by Dr. Sacha Epskamp and colleagues in 2012. We will be be working with <code>qgraph</code> and <code>bootnet</code>. Please <code>install.packages(&quot;qgraph&quot;)</code> (which we will use now) and <code>install.packages(&quot;bootnet&quot;)</code> (which we will use later) so we can get started.</p>
 <p>Now, let us load up <code>qgraph</code> - remember and save all of your code into a script.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(qgraph)</a></code></pre></div>
 </div>
 <div id="drawing-matrices" class="section level2">
 <h2><span class="header-section-number">3.5</span> Drawing Matrices</h2>
+<p>Tasks on section 3 are based on that of <a href="http://www.derekdebeurs.com/about">Derek De Beurs</a> who uses network analysis to understand suicide ideation. Check out his work.</p>
 <p>First, we will create a blank matrix with the following code. Here, we are asking R to create a matrix with 3 rows and 3 columns.</p>
 <p>The code <code>colnames(Matrix) &lt;- c(&quot;Node1&quot;,&quot;Node2&quot;,&quot;Node3&quot;)</code> is simply providing column names in the order they are created.</p>
 <p>We can see that we have created a 3x3 matrix with no data.</p>

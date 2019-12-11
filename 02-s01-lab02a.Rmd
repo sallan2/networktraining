@@ -158,12 +158,23 @@ mean_iris <- iris %>% summarise(mean_petal_length = mean(Petal.Length))
 
 ```
 
-
 - From the following options, what is the difference in the code? `r mcq(c(answer = "one is assigned to a variable", "one actually calculates the median", "both are the same"))`  
 
 `r hide("Explain This Answer!")`
 ```{block}
 `mean_iris <- iris %>% summarise(mean_petal_length = mean(Petal.Length))` calculates the mean and creates a new dataframe (which can be seen in the environment) while `iris %>% summarise(mean_petal_length = mean(Petal.Length))` simply calculates the mean.,
+```
+`r unhide()` 
+
+## Calculate a Median
+
+A lot of data in psychology can be skewed, so sometimes the median is better (as numbers are equally likely to fall above or below it). How would you adapt the code for calculating the mean to calculate a median?
+
+Calculate median petal width and save to your script.
+
+`r hide("I need a hint!")`
+```{block}
+`mean(Petal.Width)` is the function within the code block that calculates the mean, try changing to median(Petal.Width). mean_petal_width is a column name we made up so it might be a good idea to rename it something meaningful.
 ```
 `r unhide()` 
 
