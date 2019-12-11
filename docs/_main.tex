@@ -964,14 +964,14 @@ The size and density of the edges between the nodes respresent the strength of c
 
 The network shows the strength of \emph{relationships} between the variables. Some variables have quite strong connections (e.g.~PAQ12 and PAQ11), whereas others have weak relationship (e.g.~PAQ7 and PAQ3). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network. Borsboom (Borsboom, 2016) recommends exploratory network analysists start by creating manageable networks because too many nodes can lead to a dense network which is difficult to make sense from.
 
-A key concept in network analysis is the centrality of the symptom: if a behaviour or symptom (e.g.~fatigue) has many and/or strong associations to other nodes, they are more central within the network than a less connected symptom.There are different centrality metrics, and \emph{strength} most often used. Expected influence is related to strength but argued to be a \href{https://psych-networks.com/expected-influence-new-centrality-metric-robinaugh-et-al-2016/}{better metric} - adapted from open source materials by \href{https://derekdebeurs.github.io/esssb17/}{Derek DeBuers}
+A key concept in network analysis is the centrality of the symptom: if a behaviour or symptom (e.g.~fatigue) has many and/or strong associations to other nodes, they are more central within the network than a less connected symptom.There are different centrality metrics, and \emph{strength} most often used. Expected influence is related to strength but argued to sometimes be a \href{https://psych-networks.com/expected-influence-new-centrality-metric-robinaugh-et-al-2016/}{better metric}
 
-From looking at both strength and expected influence, it appears PAQ12 and PAQ8 have the strongest influence on the nodes in the network. How might we interpret this? Network analysis is purely statistical, the measurement and inclusion of nodes depend on your theory / research question.
+From looking at strength, it appears PAQ12 and PAQ8 have the strongest influence on the nodes in the network. How might we interpret this? Network analysis is purely statistical, the measurement and inclusion of nodes depend on your theory / research question.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{centralityPlot}\NormalTok{(Network, }\DataTypeTok{include =} \KeywordTok{c}\NormalTok{(}\StringTok{"Strength"}\NormalTok{,}\StringTok{"ExpectedInfluence"}\NormalTok{),}
-               \DataTypeTok{orderBy =} \StringTok{"ExpectedInfluence"}\NormalTok{)}
+\KeywordTok{centralityPlot}\NormalTok{(Network, }\DataTypeTok{include =} \KeywordTok{c}\NormalTok{(}\StringTok{"Strength"}\NormalTok{),}
+               \DataTypeTok{orderBy =} \StringTok{"Strength"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
