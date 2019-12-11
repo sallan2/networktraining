@@ -156,8 +156,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#iris-task"><i class="fa fa-check"></i><b>2.3</b> iris Task</a></li>
 <li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-mean"><i class="fa fa-check"></i><b>2.4</b> Calculate a Mean</a></li>
-<li class="chapter" data-level="2.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-median"><i class="fa fa-check"></i><b>2.5</b> Calculate a Median</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.5.1</b> Keeping Environment Clean</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#calculate-a-median"><i class="fa fa-check"></i><b>2.5</b> Calculate a Median</a></li>
+<li class="chapter" data-level="2.6" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#groups"><i class="fa fa-check"></i><b>2.6</b> Groups</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#keeping-environment-clean"><i class="fa fa-check"></i><b>2.6.1</b> Keeping Environment Clean</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>3</b> Network Analysis</a><ul>
@@ -278,6 +279,12 @@ I need a hint!
 <p><img src="images/tidyverse.gif"></p>
 <pre class="rinstall"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 <p>Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than <code>tidyverse</code>, simply substitute the package name.</p>
+<p>One of the key underlying structures of the tidyverse is that data structures follow a tidy format:</p>
+<ul>
+<li>Each variable is in a column</li>
+<li>Each observation is a row</li>
+<li>Each value is a cell</li>
+</ul>
 </div>
 <div id="opening-spss-files" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Opening SPSS Files</h3>
@@ -318,6 +325,8 @@ I need a hint!
 <p><code>summarise</code> is a useful function which works for means, medians and interquartile ranges and gives results in a single row.</p>
 <p>You can run <code>?summarise</code> to bring up the help function for more information.</p>
 <p>Now, try running the following codes within your iris script.</p>
+<p><img src="images/pipe.jpg"></p>
+<p>the %&gt;% is the pipe operator, it simply means <strong>“and then”</strong>. So, we are bringing up the iris database <strong>“and then”</strong> we are summarising.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_petal_length =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">mean_iris &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_petal_length =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
 <ul>
@@ -340,12 +349,26 @@ I need a hint!
 </button>
 <p><code>mean(Petal.Width)</code> is the function within the code block that calculates the mean, try changing to median(Petal.Width). mean_petal_width is a column name we made up so it might be a good idea to rename it something meaningful.</p>
 </div>
+</div>
+<div id="groups" class="section level2">
+<h2><span class="header-section-number">2.6</span> Groups</h2>
+<p>What about if we wanted to calculate a mean for each different species of orchid? <code>Tidyverse</code> has a helpful option which lets us group by factors. This is helpful if we are looking at differences between females and males, for example</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">grouped &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_petal_length =</span> <span class="kw">mean</span>(Petal.Length))</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">grouped</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   Species    mean_petal_length
+##   &lt;fct&gt;                  &lt;dbl&gt;
+## 1 setosa                  1.46
+## 2 versicolor              4.26
+## 3 virginica               5.55</code></pre>
+<p>What has the smallest mean petal length?</p>
+<p><select class='solveme' data-answer='["sertosa"]'> <option></option> <option>versicolor</option> <option>sertosa</option> <option>virginca</option></select></p>
 <div id="keeping-environment-clean" class="section level3">
-<h3><span class="header-section-number">2.5.1</span> Keeping Environment Clean</h3>
+<h3><span class="header-section-number">2.6.1</span> Keeping Environment Clean</h3>
 <p>As you work, you will notice your environment will (quickly) fill up with lots of variables that you have assigned.</p>
 <p><img src="images/messy.png"></p>
 <p>Before beginning any new analyses it is important to clear the environment which can be done with the following code. If you run this code R will forget any libraries that you have loaded, such as <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
 
 </div>
 </div>

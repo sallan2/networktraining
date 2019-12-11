@@ -99,6 +99,12 @@ install.packages("tidyverse")
 
 Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than `tidyverse`, simply substitute the package name. 
 
+One of the key underlying structures of the tidyverse is that data structures follow a tidy format:
+
+* Each variable is in a column
+* Each observation is a row
+* Each value is a cell
+
 ### Opening SPSS Files
 
 The `foreign` package allows easy opening of .sav files which are associated with SPSS.
@@ -145,6 +151,11 @@ You can run `?summarise` to bring up the help function for more information.
 
 Now, try running the following codes within your iris script.
 
+<img src="images/pipe.jpg">
+
+the %>% is the pipe operator, it simply means **"and then"**. So, we are bringing up the iris database **"and then"** we are summarising.
+
+
 ```{r means, results='hide'}
 
 iris %>% summarise(mean_petal_length = mean(Petal.Length))
@@ -177,6 +188,22 @@ Calculate median petal width and save to your script.
 `mean(Petal.Width)` is the function within the code block that calculates the mean, try changing to median(Petal.Width). mean_petal_width is a column name we made up so it might be a good idea to rename it something meaningful.
 ```
 `r unhide()` 
+
+
+## Groups
+
+What about if we wanted to calculate a mean for each different species of orchid? `Tidyverse` has a helpful option which lets us group by factors. This is helpful if we are looking at differences between females and males, for example
+
+```{r grouped}
+
+grouped <- iris %>% group_by(Species) %>% summarise(mean_petal_length = mean(Petal.Length))
+grouped
+
+```
+
+What has the smallest mean petal length?
+
+`r mcq(c("versicolor", answer = "sertosa", "virginca"))`  
 
 ### Keeping Environment Clean
 

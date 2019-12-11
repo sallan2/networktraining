@@ -368,6 +368,18 @@ install.packages("tidyverse")
 
 Once the package has been installed, any time you want to use the package you use the following code. If you want to open a package other than \texttt{tidyverse}, simply substitute the package name.
 
+One of the key underlying structures of the tidyverse is that data structures follow a tidy format:
+
+\begin{itemize}
+\tightlist
+\item
+  Each variable is in a column
+\item
+  Each observation is a row
+\item
+  Each value is a cell
+\end{itemize}
+
 \hypertarget{opening-spss-files}{%
 \subsection{Opening SPSS Files}\label{opening-spss-files}}
 
@@ -430,6 +442,8 @@ You can run \texttt{?summarise} to bring up the help function for more informati
 
 Now, try running the following codes within your iris script.
 
+the \%\textgreater{}\% is the pipe operator, it simply means \textbf{``and then''}. So, we are bringing up the iris database \textbf{``and then''} we are summarising.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{iris }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_petal_length =} \KeywordTok{mean}\NormalTok{(Petal.Length))}
@@ -462,6 +476,31 @@ Calculate median petal width and save to your script.
 I need a hint!
 
 \texttt{mean(Petal.Width)} is the function within the code block that calculates the mean, try changing to median(Petal.Width). mean\_petal\_width is a column name we made up so it might be a good idea to rename it something meaningful.
+
+\hypertarget{groups}{%
+\section{Groups}\label{groups}}
+
+What about if we wanted to calculate a mean for each different species of orchid? \texttt{Tidyverse} has a helpful option which lets us group by factors. This is helpful if we are looking at differences between females and males, for example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grouped <-}\StringTok{ }\NormalTok{iris }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(Species) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_petal_length =} \KeywordTok{mean}\NormalTok{(Petal.Length))}
+\NormalTok{grouped}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   Species    mean_petal_length
+##   <fct>                  <dbl>
+## 1 setosa                  1.46
+## 2 versicolor              4.26
+## 3 virginica               5.55
+\end{verbatim}
+
+What has the smallest mean petal length?
+
+ versicolor sertosa virginca
 
 \hypertarget{keeping-environment-clean}{%
 \subsection{Keeping Environment Clean}\label{keeping-environment-clean}}
@@ -772,7 +811,7 @@ The \# symbol in the code is a comment. Comments do not add anything to the code
 
 Participants rated themselves on 23 items of the TEQ questionnaire which asked about exposure to different traumatic events. We would like to create a plot to visualise the total TEQ and where participants live. However, we need to clean the data a little bit first. We will explain each line in the code below.
 
-The pipe operator \%\textgreater{}\% is something you will see a lot and (in terms of code) means ``and then''
+We will use the pipe \%\textgreater{}\% a lot to tell R to do something \textbf{``and then''} do something else.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
