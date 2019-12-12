@@ -1,10 +1,16 @@
-
 ---
 title: "Web Exercises"
 output: webex::webex_default
 ---
 
-
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (!requireNamespace("webex")) {
+  stop("You must have the 'webex' package installed to knit HTML from this template.\n   devtools::install_github(\"psyteachr/webex\")")
+} else {
+  library("webex")
+}
+```
 
 This is a Web Exercise template created by the [psychology teaching team at the University of Glasgow](http://www.psy.gla.ac.uk), based on ideas from [Software Carpentry](https://software-carpentry.org/lessons/). This template shows how instructors can easily create interactive web documents that students can use in self-guided learning.
 
@@ -16,34 +22,36 @@ The webex package provides a number of functions that you use in [inline R code]
 
 Create fill-in-the-blank questions using `fitb()`, providing the answer as the first argument.
 
-- 2 + 2 is <input class='solveme nospaces' size='1' data-answer='["4"]'/>
+- 2 + 2 is `r fitb("4")`
 
 You can also create these questions dynamically, using variables from your R session.
 
+```{r echo = FALSE}
+x <- sample(2:8, 1)
+```
 
-
-- The square root of 64 is: <input class='solveme nospaces' size='1' data-answer='["8"]'/>
+- The square root of `r x^2` is: `r fitb(x)`
 
 The blanks are case-sensitive; if you don't care about case, use the argument `ignore_case = TRUE`.
 
-- What is the letter after D? <input class='solveme nospaces ignorecase' size='1' data-answer='["E"]'/>
+- What is the letter after D? `r fitb("E", ignore_case = TRUE)`
 
 If you want to ignore differences in whitespace use, use the argument `ignore_ws = TRUE` (which is the default) and include spaces in your answer anywhere they could be acceptable.
 
-- How do you load the tidyverse package? <input class='solveme nospaces ignorecase regex' size='20' data-answer='["library( tidyverse )","library( \"tidyverse\" )","library( &apos;tidyverse&apos; )"]'/>
+- How do you load the tidyverse package? `r fitb(c("library( tidyverse )", "library( \"tidyverse\" )", "library( 'tidyverse' )"), ignore_case = TRUE, width = "20", regex = TRUE)`
 
 You can set more than one possible correct answer by setting the answers as a vector.
 
-- Type a vowel: <input class='solveme nospaces ignorecase' size='1' data-answer='["A","E","I","O","U"]'/>
+- Type a vowel: `r fitb(c("A", "E", "I", "O" , "U"), ignore_case = TRUE)`
 
 ## Multiple Choice (`mcq()`)
 
-- "Never gonna give you up, never gonna: <select class='solveme' data-answer='["let you down"]'> <option></option> <option>let you go</option> <option>turn you down</option> <option>run away</option> <option>let you down</option></select>"
-- "I <select class='solveme' data-answer='["bless the rains"]'> <option></option> <option>bless the rains</option> <option>guess it rains</option> <option>sense the rain</option></select> down in Africa" -Toto
+- "Never gonna give you up, never gonna: `r mcq(c("let you go", "turn you down", "run away", answer = "let you down"))`"
+- "I `r mcq(c(answer = "bless the rains", "guess it rains", "sense the rain"))` down in Africa" -Toto
 
 ## True or False (`torf()`)
 
-- True or False? You can permute values in a vector using `sample()`. <select class='solveme' data-answer='["TRUE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select>
+- True or False? You can permute values in a vector using `sample()`. `r torf(TRUE)`
 
 ## Hidden solutions and hints
 
@@ -55,27 +63,17 @@ If the solution is an RMarkdown code chunk, instead of using `hide()` and `unhid
 
 **Recreate the scatterplot below, using the built-in `cars` dataset.**
 
-\begin{figure}
+```{r echo = FALSE}
+with(cars, plot(speed, dist))
+```
 
-{\centering \includegraphics[width=1\linewidth]{Untitled_files/figure-latex/unnamed-chunk-3-1} 
-
-}
-
-\caption{**CAPTION THIS FIGURE!!**}(\#fig:unnamed-chunk-3)
-\end{figure}
-
-
-<div class='solution'><button>I need a hint</button>
-
+`r hide("I need a hint")`
 See the documentation for `plot()` (`?plot`)
-
-</div>
-
+`r unhide()`
 
 <!-- note: you could also just set webex.hide to TRUE -->
 
-
-```r
+```{r eval = FALSE, webex.hide="Click here to see the solution"}
 plot(cars$speed, cars$dist)
 ```
 
@@ -84,11 +82,5 @@ plot(cars$speed, cars$dist)
   and then re-compile;
   unfilled becomes yellow, correct becomes pink 
      
-
-<style>
-    .solveme { border-color: #FFFF00; }
-    .solveme.correct { border-color: #FF3399; }
-</style>
-
-
+`r style_widgets("#FFFF00", "#FF3399")`
 -->

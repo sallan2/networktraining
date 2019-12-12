@@ -1065,6 +1065,106 @@ You can now interact with this file as described in the rest of the learning mat
 
 Tasks on section 3 are based on that of \href{http://www.derekdebeurs.com/about}{Derek De Beurs} who uses network analysis to understand suicide ideation. Check out his work.
 
+This is a Web Exercise template created by the \href{http://www.psy.gla.ac.uk}{psychology teaching team at the University of Glasgow}, based on ideas from \href{https://software-carpentry.org/lessons/}{Software Carpentry}. This template shows how instructors can easily create interactive web documents that students can use in self-guided learning.
+
+The webex package provides a number of functions that you use in \href{https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf}{inline R code} to create HTML widgets (text boxes, pull down menus, buttons that reveal hidden content). Examples are given below. Knit this file to HTML to see how it works.
+
+\textbf{NOTE: To use the widgets in the compiled HTML file, you need to have a JavaScript-enabled browser. The widgets don't work in the built-in RStudio browser. In the built-in browser, click the ``Open in Browser'' button to open the file in your operating system's browser.}
+
+\hypertarget{fill-in-the-blanks-fitb}{%
+\section{\texorpdfstring{Fill-In-The-Blanks (\texttt{fitb()})}{Fill-In-The-Blanks (fitb())}}\label{fill-in-the-blanks-fitb}}
+
+Create fill-in-the-blank questions using \texttt{fitb()}, providing the answer as the first argument.
+
+\begin{itemize}
+\tightlist
+\item
+  2 + 2 is 
+\end{itemize}
+
+You can also create these questions dynamically, using variables from your R session.
+
+\begin{itemize}
+\tightlist
+\item
+  The square root of 64 is: 
+\end{itemize}
+
+The blanks are case-sensitive; if you don't care about case, use the argument \texttt{ignore\_case\ =\ TRUE}.
+
+\begin{itemize}
+\tightlist
+\item
+  What is the letter after D? 
+\end{itemize}
+
+If you want to ignore differences in whitespace use, use the argument \texttt{ignore\_ws\ =\ TRUE} (which is the default) and include spaces in your answer anywhere they could be acceptable.
+
+\begin{itemize}
+\tightlist
+\item
+  How do you load the tidyverse package? 
+\end{itemize}
+
+You can set more than one possible correct answer by setting the answers as a vector.
+
+\begin{itemize}
+\tightlist
+\item
+  Type a vowel: 
+\end{itemize}
+
+\hypertarget{multiple-choice-mcq}{%
+\section{\texorpdfstring{Multiple Choice (\texttt{mcq()})}{Multiple Choice (mcq())}}\label{multiple-choice-mcq}}
+
+\begin{itemize}
+\tightlist
+\item
+  ``Never gonna give you up, never gonna: let you go turn you down run away let you down''
+\item
+  ``I bless the rains guess it rains sense the rain down in Africa'' -Toto
+\end{itemize}
+
+\hypertarget{true-or-false-torf}{%
+\section{\texorpdfstring{True or False (\texttt{torf()})}{True or False (torf())}}\label{true-or-false-torf}}
+
+\begin{itemize}
+\tightlist
+\item
+  True or False? You can permute values in a vector using \texttt{sample()}. TRUE FALSE
+\end{itemize}
+
+\hypertarget{hidden-solutions-and-hints}{%
+\section{Hidden solutions and hints}\label{hidden-solutions-and-hints}}
+
+You can fence off a solution area that will be hidden behind a button using \texttt{hide()} before the solution and \texttt{unhide()} after, each as inline R code. Pass the text you want to appear on the button to the \texttt{hide()} function.
+
+If the solution is an RMarkdown code chunk, instead of using \texttt{hide()} and \texttt{unhide()}, simply set the \texttt{webex.hide} chunk option to TRUE, or set it to the string you wish to display on the button.
+
+\hypertarget{example-problem}{%
+\subsection{Example problem}\label{example-problem}}
+
+\textbf{Recreate the scatterplot below, using the built-in \texttt{cars} dataset.}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Untitled_files/figure-latex/unnamed-chunk-3-1} 
+
+}
+
+\caption{**CAPTION THIS FIGURE!!**}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+I need a hint
+
+See the documentation for \texttt{plot()} (\texttt{?plot})
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(cars}\OperatorTok{$}\NormalTok{speed, cars}\OperatorTok{$}\NormalTok{dist)}
+\end{Highlighting}
+\end{Shaded}
+
 \bibliography{book.bib,packages.bib}
 
 
