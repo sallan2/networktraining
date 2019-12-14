@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-12-12" />
+<meta name="date" content="2019-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,14 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.3.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#uploading-files"><i class="fa fa-check"></i><b>A.3.2</b> Uploading Files</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>B</b> References</a><ul>
-<li class="chapter" data-level="B.1" data-path="references.html"><a href="references.html#fill-in-the-blanks-fitb"><i class="fa fa-check"></i><b>B.1</b> Fill-In-The-Blanks (<code>fitb()</code>)</a></li>
-<li class="chapter" data-level="B.2" data-path="references.html"><a href="references.html#multiple-choice-mcq"><i class="fa fa-check"></i><b>B.2</b> Multiple Choice (<code>mcq()</code>)</a></li>
-<li class="chapter" data-level="B.3" data-path="references.html"><a href="references.html#true-or-false-torf"><i class="fa fa-check"></i><b>B.3</b> True or False (<code>torf()</code>)</a></li>
-<li class="chapter" data-level="B.4" data-path="references.html"><a href="references.html#hidden-solutions-and-hints"><i class="fa fa-check"></i><b>B.4</b> Hidden solutions and hints</a><ul>
-<li class="chapter" data-level="B.4.1" data-path="references.html"><a href="references.html#example-problem"><i class="fa fa-check"></i><b>B.4.1</b> Example problem</a></li>
-</ul></li>
-</ul></li>
+<li class="chapter" data-level="B" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
     target="blank"><img alt="Creative Commons License" 
@@ -229,84 +222,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="http://sachaepskamp.com/files/Cookbook.html">Network Analysis Cookbook - Also covers R introduction</a></p>
 <p><a href="https://psyteachr.github.io/">We are grateful to PsyTeachR from the University of Glasgow</a> for allowing us to build upon their open source teaching materials.</p>
 <p><a href="https://www.tandfonline.com/doi/full/10.1080/21642850.2018.1521283">Network Analysis Tutorial</a></p>
-<p>Tasks on section 3 are based on that of <a href="http://www.derekdebeurs.com/about">Derek De Beurs</a> who uses network analysis to understand suicide ideation. Check out his work.</p>
+<p>Tasks on section 3 are based on that of <a href="http://www.derekdebeurs.com/about">Derek De Beurs</a> who uses network analysis to understand suicide ideation. Check out his work, he explains things really well.</p>
+<p><a href="%22https://text-compare.com/%22">Useful website which lets you compare your own code to another</a></p>
 
-<p>This is a Web Exercise template created by the <a href="http://www.psy.gla.ac.uk">psychology teaching team at the University of Glasgow</a>, based on ideas from <a href="https://software-carpentry.org/lessons/">Software Carpentry</a>. This template shows how instructors can easily create interactive web documents that students can use in self-guided learning.</p>
-<p>The webex package provides a number of functions that you use in <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">inline R code</a> to create HTML widgets (text boxes, pull down menus, buttons that reveal hidden content). Examples are given below. Knit this file to HTML to see how it works.</p>
-<p><strong>NOTE: To use the widgets in the compiled HTML file, you need to have a JavaScript-enabled browser. The widgets don’t work in the built-in RStudio browser. In the built-in browser, click the “Open in Browser” button to open the file in your operating system’s browser.</strong></p>
-<div id="fill-in-the-blanks-fitb" class="section level2">
-<h2><span class="header-section-number">B.1</span> Fill-In-The-Blanks (<code>fitb()</code>)</h2>
-<p>Create fill-in-the-blank questions using <code>fitb()</code>, providing the answer as the first argument.</p>
-<ul>
-<li>2 + 2 is <input class='solveme nospaces' size='1' data-answer='["4"]'/></li>
-</ul>
-<p>You can also create these questions dynamically, using variables from your R session.</p>
-<ul>
-<li>The square root of 25 is: <input class='solveme nospaces' size='1' data-answer='["5"]'/></li>
-</ul>
-<p>The blanks are case-sensitive; if you don’t care about case, use the argument <code>ignore_case = TRUE</code>.</p>
-<ul>
-<li>What is the letter after D? <input class='solveme nospaces ignorecase' size='1' data-answer='["E"]'/></li>
-</ul>
-<p>If you want to ignore differences in whitespace use, use the argument <code>ignore_ws = TRUE</code> (which is the default) and include spaces in your answer anywhere they could be acceptable.</p>
-<ul>
-<li>How do you load the tidyverse package? <input class='solveme nospaces ignorecase regex' size='20' data-answer='["library( tidyverse )","library( \"tidyverse\" )","library( &apos;tidyverse&apos; )"]'/></li>
-</ul>
-<p>You can set more than one possible correct answer by setting the answers as a vector.</p>
-<ul>
-<li>Type a vowel: <input class='solveme nospaces ignorecase' size='1' data-answer='["A","E","I","O","U"]'/></li>
-</ul>
-</div>
-<div id="multiple-choice-mcq" class="section level2">
-<h2><span class="header-section-number">B.2</span> Multiple Choice (<code>mcq()</code>)</h2>
-<ul>
-<li>“Never gonna give you up, never gonna: <select class='solveme' data-answer='["let you down"]'> <option></option> <option>let you go</option> <option>turn you down</option> <option>run away</option> <option>let you down</option></select>”</li>
-<li>“I <select class='solveme' data-answer='["bless the rains"]'> <option></option> <option>bless the rains</option> <option>guess it rains</option> <option>sense the rain</option></select> down in Africa” -Toto</li>
-</ul>
-</div>
-<div id="true-or-false-torf" class="section level2">
-<h2><span class="header-section-number">B.3</span> True or False (<code>torf()</code>)</h2>
-<ul>
-<li>True or False? You can permute values in a vector using <code>sample()</code>. <select class='solveme' data-answer='["TRUE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select></li>
-</ul>
-</div>
-<div id="hidden-solutions-and-hints" class="section level2">
-<h2><span class="header-section-number">B.4</span> Hidden solutions and hints</h2>
-<p>You can fence off a solution area that will be hidden behind a button using <code>hide()</code> before the solution and <code>unhide()</code> after, each as inline R code. Pass the text you want to appear on the button to the <code>hide()</code> function.</p>
-<p>If the solution is an RMarkdown code chunk, instead of using <code>hide()</code> and <code>unhide()</code>, simply set the <code>webex.hide</code> chunk option to TRUE, or set it to the string you wish to display on the button.</p>
-<div id="example-problem" class="section level3">
-<h3><span class="header-section-number">B.4.1</span> Example problem</h3>
-<p><strong>Recreate the scatterplot below, using the built-in <code>cars</code> dataset.</strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="Untitled_files/figure-html/unnamed-chunk-3-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">
-Figure B.1: <strong>CAPTION THIS FIGURE!!</strong>
-</p>
-</div>
-<div class="solution">
-<button>
-I need a hint
-</button>
-<p>See the documentation for <code>plot()</code> (<code>?plot</code>)</p>
-</div>
-<!-- note: you could also just set webex.hide to TRUE -->
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">plot</span>(cars<span class="op">$</span>speed, cars<span class="op">$</span>dist)</a></code></pre></div>
-<!-- TO CHANGE WIDGET COLOURS:
-  move command below out of this HTML comment area
-  and then re-compile;
-  unfilled becomes yellow, correct becomes pink 
-     
-
-<style>
-    .solveme { border-color: #FFFF00; }
-    .solveme.correct { border-color: #FF3399; }
-</style>
-
-
--->
-
-</div>
-</div>
 </div>
 <div class="psyteachr_footer">
   

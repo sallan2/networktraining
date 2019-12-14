@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-12-12" />
+<meta name="date" content="2019-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -192,14 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.3.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#uploading-files"><i class="fa fa-check"></i><b>A.3.2</b> Uploading Files</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>B</b> References</a><ul>
-<li class="chapter" data-level="B.1" data-path="references.html"><a href="references.html#fill-in-the-blanks-fitb"><i class="fa fa-check"></i><b>B.1</b> Fill-In-The-Blanks (<code>fitb()</code>)</a></li>
-<li class="chapter" data-level="B.2" data-path="references.html"><a href="references.html#multiple-choice-mcq"><i class="fa fa-check"></i><b>B.2</b> Multiple Choice (<code>mcq()</code>)</a></li>
-<li class="chapter" data-level="B.3" data-path="references.html"><a href="references.html#true-or-false-torf"><i class="fa fa-check"></i><b>B.3</b> True or False (<code>torf()</code>)</a></li>
-<li class="chapter" data-level="B.4" data-path="references.html"><a href="references.html#hidden-solutions-and-hints"><i class="fa fa-check"></i><b>B.4</b> Hidden solutions and hints</a><ul>
-<li class="chapter" data-level="B.4.1" data-path="references.html"><a href="references.html#example-problem"><i class="fa fa-check"></i><b>B.4.1</b> Example problem</a></li>
-</ul></li>
-</ul></li>
+<li class="chapter" data-level="B" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>B</b> References</a></li>
 <li class="divider"></li>
 <li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
     target="blank"><img alt="Creative Commons License" 
@@ -340,7 +333,7 @@ Figure 4.2: TEQ Scores
 <p>In this example, we will create a simple network from the single question items of the PAQ (Parental Authority Questionnaire).</p>
 <p>First, we will select the PAQ items from data_factors:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">PAQ &lt;-<span class="st"> </span>data_factors <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(PAQ1<span class="op">:</span>PAQ12)</a></code></pre></div>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(PAQ1<span class="op">:</span>PAQ11)</a></code></pre></div>
 <p>Like all statistical techniques that use sample data to estimate parameters, the correlation and partial correlations values will be influenced by sampling variations and exact zeros will be rarely observed in the matrices. Consequently, correlation networks will nearly always be fully connected networks, possibly with small weights on many of the edges that reflect weak and potentially spurious partial correlations.</p>
 <p>Spurious relationships will be problematic in terms of the network interpretation and will compromise the potential for network replication. In order to limit the number of such spurious relationships, a statistical regularisation technique, which takes into account the model complexity, is frequently used.</p>
 <p>The LASSO regularisation yields a more parsimonious network (fewer connections between nodes), assumed to reflect only the most “important” empirical relationships in the data. The LASSO utilizes a tuning parameter λ (lambda) that controls the level of sparsity. The tuning parameter directly controls how much the likelihood is penalized for the sum of absolute parameter values. When the tuning parameter is low, only a few edges are removed, likely resulting in the retention of spurious edges. When the tuning parameter is high, many edges are removed, likely resulting in the removal of true edges in addition to the removal of spurious edges. EBICglasso sets a tuning parameter of 0.5 by default.</p>
@@ -369,11 +362,10 @@ Figure 4.3: PAQ Network Graph
 <li>Usually I tell my family about my relationships with teachers</li>
 <li>Usually I conceal from family a lot of things which I do in the evening</li>
 <li>When I am out, I tell my family what I did after coming home</li>
-<li>When I am out, I do not tell my family what I did after coming home</li>
 </ol>
-<p>The network shows the strength of <em>relationships</em> between the variables. Some variables have quite strong connections (e.g. PAQ12 and PAQ11), whereas others have weak relationship (e.g. PAQ7 and PAQ3). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network. Borsboom (Borsboom, 2016) recommends exploratory network analysists start by creating manageable networks because too many nodes can lead to a dense network which is difficult to make sense from.</p>
+<p>The network shows the strength of <em>relationships</em> between the variables. Some variables have quite strong connections (e.g. PAQ8 and PAQ7), whereas others have weak relationship (e.g. PAQ8 and PAQ10). Visual inspection of the network suggests that some variables may be related. However, visual inspection of the graphical display of complex relationships requires careful interpretation, especially if there are a large number of nodes in the network. Borsboom (Borsboom, 2016) recommends exploratory network analysists start by creating manageable networks because too many nodes can lead to a dense network which is difficult to make sense from.</p>
 <p>A key concept in network analysis is the centrality of the symptom: if a behaviour or symptom (e.g. fatigue) has many and/or strong associations to other nodes, they are more central within the network than a less connected symptom.There are different centrality metrics, and <em>strength</em> most often used. Expected influence is related to strength but argued to sometimes be a <a href="https://psych-networks.com/expected-influence-new-centrality-metric-robinaugh-et-al-2016/">better metric</a></p>
-<p>From looking at strength, it appears PAQ12 and PAQ8 have the strongest influence on the nodes in the network. How might we interpret this? Network analysis is purely statistical, the measurement and inclusion of nodes depend on your theory / research question.</p>
+<p>From looking at strength, it appears PAQ7 and PAQ8 have the strongest influence on the nodes in the network. How might we interpret this? Network analysis is purely statistical, the measurement and inclusion of nodes depend on your theory / research question.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">centralityPlot</span>(Network, <span class="dt">include =</span> <span class="kw">c</span>(<span class="st">&quot;Strength&quot;</span>),</a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">               <span class="dt">orderBy =</span> <span class="st">&quot;Strength&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Pcentrality"></span>
